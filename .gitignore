@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+# raw downloads and large inputs are never committed (see data_derived/README.md)
+*.sql.gz
+*.tsv

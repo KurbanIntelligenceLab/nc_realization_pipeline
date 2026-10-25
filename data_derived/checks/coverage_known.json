@@ -1,0 +1,122 @@
+{
+  "experimental_reports_compositions": 402262,
+  "oqmd_v1_0": {
+    "icsd_origin_compositions": 24487,
+    "found_in_reports": 12907,
+    "share_found": 0.5270960101278229,
+    "by_number_of_elements": {
+      "2": {
+        "n": 5108,
+        "found": 3123,
+        "share": 0.6113938919342208
+      },
+      "3": {
+        "n": 13849,
+        "found": 6511,
+        "share": 0.47014224853780057
+      },
+      "4": {
+        "n": 4638,
+        "found": 2756,
+        "share": 0.5942216472617508
+      },
+      "5": {
+        "n": 809,
+        "found": 469,
+        "share": 0.5797280593325093
+      },
+      "6": {
+        "n": 77,
+        "found": 46,
+        "share": 0.5974025974025974
+      },
+      "7": {
+        "n": 6,
+        "found": 2,
+        "share": 0.3333333333333333
+      }
+    },
+    "found_with_report_dated_on_or_before_release": 12779
+  },
+  "oqmd_v1_1": {
+    "icsd_origin_compositions": 27626,
+    "found_in_reports": 14555,
+    "share_found": 0.5268587562441178,
+    "by_number_of_elements": {
+      "2": {
+        "n": 5696,
+        "found": 3500,
+        "share": 0.6144662921348315
+      },
+      "3": {
+        "n": 15098,
+        "found": 7039,
+        "share": 0.46622069148231554
+      },
+      "4": {
+        "n": 5621,
+        "found": 3314,
+        "share": 0.5895748087528909
+      },
+      "5": {
+        "n": 1073,
+        "found": 615,
+        "share": 0.5731593662628145
+      },
+      "6": {
+        "n": 125,
+        "found": 79,
+        "share": 0.632
+      },
+      "7": {
+        "n": 13,
+        "found": 8,
+        "share": 0.6153846153846154
+      }
+    },
+    "found_with_report_dated_on_or_before_release": 14467
+  },
+  "mp_2022_10_28": {
+    "icsd_origin_compositions": 43322,
+    "found_in_reports": 21145,
+    "share_found": 0.48808919255805366,
+    "by_number_of_elements": {
+      "2": {
+        "n": 6730,
+        "found": 3750,
+        "share": 0.5572065378900446
+      },
+      "3": {
+        "n": 20624,
+        "found": 8813,
+        "share": 0.4273176881303336
+      },
+      "4": {
+        "n": 11232,
+        "found": 5993,
+        "share": 0.5335648148148148
+      },
+      "5": {
+        "n": 3657,
+        "found": 2007,
+        "share": 0.5488105004101723
+      },
+      "6": {
+        "n": 926,
+        "found": 500,
+        "share": 0.5399568034557235
+      },
+      "7": {
+        "n": 144,
+        "found": 78,
+        "share": 0.5416666666666666
+      },
+      "8": {
+        "n": 9,
+        "found": 4,
+        "share": 0.4444444444444444
+      }
+    },
+    "found_with_report_dated_on_or_before_release": 21114
+  }
+}

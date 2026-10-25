@@ -1,0 +1,96 @@
+{
+  "events": [
+    {
+      "files": {
+        "oqmd_v1_0": {
+          "path": "/Users/hasankurban/ncr_study/data/snapshots/oqmd_v1_0.csv",
+          "sha256": "524ddcf5bbf3b138c016ccf66797c002497b1f205068e9bcfb47e6699eafe81e",
+          "rows": 279210,
+          "hypothetical": 249495
+        },
+        "oqmd_v1_1": {
+          "path": "/Users/hasankurban/ncr_study/data/snapshots/oqmd_v1_1.csv",
+          "sha256": "d499063efed8569813821f0d987b015f76e3fdbc1a81613bf03aba7671860bc0",
+          "rows": 310219,
+          "hypothetical": 277481
+        }
+      },
+      "versions": {
+        "python": "3.11.2",
+        "numpy": "2.4.4",
+        "pymatgen": "2026.10.24",
+        "matplotlib": "3.10.8",
+        "anthropic": "2.3.0"
+      },
+      "kind": "inputs",
+      "time": "2026-10-24T22:10:45"
+    },
+    {
+      "files": {
+        "oqmd_v1_0": {
+          "path": "/Users/hasankurban/ncr_study/data/snapshots/oqmd_v1_0.csv",
+          "sha256": "524ddcf5bbf3b138c016ccf66797c002497b1f205068e9bcfb47e6699eafe81e",
+          "rows": 279210,
+          "hypothetical": 249495
+        },
+        "oqmd_v1_1": {
+          "path": "/Users/hasankurban/ncr_study/data/snapshots/oqmd_v1_1.csv",
+          "sha256": "d499063efed8569813821f0d987b015f76e3fdbc1a81613bf03aba7671860bc0",
+          "rows": 310219,
+          "hypothetical": 277481
+        },
+        "mp_2022_10_28": {
+          "path": "/Users/hasankurban/ncr_study/data/snapshots/mp_2022_10_28.csv",
+          "sha256": "0fdf7530666494449edf4a59ccaff20287ab5160838643a9402733db3ba974a2",
+          "rows": 154807,
+          "hypothetical": 104723
+        }
+      },
+      "versions": {
+        "python": "3.11.2",
+        "numpy": "2.4.4",
+        "pymatgen": "2026.10.24",
+        "matplotlib": "3.10.8",
+        "anthropic": "2.3.0"
+      },
+      "kind": "inputs",
+      "time": "2026-10-24T23:11:19"
+    },
+    {
+      "files": {
+        "oqmd_v1_0": {
+          "path": "/Users/hasankurban/ncr_study/data/snapshots/oqmd_v1_0.csv",
+          "sha256": "524ddcf5bbf3b138c016ccf66797c002497b1f205068e9bcfb47e6699eafe81e",
+          "rows": 279210,
+          "hypothetical": 249495
+        },
+        "oqmd_v1_1": {
+          "path": "/Users/hasankurban/ncr_study/data/snapshots/oqmd_v1_1.csv",
+          "sha256": "d499063efed8569813821f0d987b015f76e3fdbc1a81613bf03aba7671860bc0",
+          "rows": 310219,
+          "hypothetical": 277481
+        },
+        "mp_2022_10_28": {
+          "path": "/Users/hasankurban/ncr_study/data/snapshots/mp_2022_10_28.csv",
+          "sha256": "0fdf7530666494449edf4a59ccaff20287ab5160838643a9402733db3ba974a2",
+          "rows": 154807,
+          "hypothetical": 104723
+        },
+        "experiments": {
+          "path": "/Users/hasankurban/ncr_study/data/experiments/all_experiments.csv",
+          "sha256": "e5ffad558fd0d9b4eb74a30980d2be1a1eb720c0ec4f3ec1c2a351bc403b1356",
+          "rows": 624213
+        }
+      },
+      "versions": {
+        "python": "3.11.2",
+        "numpy": "2.4.4",
+        "pymatgen": "2026.10.24",
+        "matplotlib": "3.10.8",
+        "anthropic": "2.3.0"
+      },
+      "kind": "inputs",
+      "time": "2026-10-25T21:45:52"
+    }
+  ]
+}
