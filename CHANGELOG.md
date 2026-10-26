@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.2 (26 October 2026)
+
+Documentation only.
+- `data_derived/README.md` explains the packages and paths in the original study manifest, which is kept unchanged.
+- `README.md` notes what release 2.2.2 in the history contains.
+
 ## 2.4.1 (26 October 2026)
 
 Documentation and provenance only; no code path or estimate changes.
@@ -16,7 +22,7 @@ Changes after the first public release. Every estimate in the paper is unchanged
 - **Fig. 2 redesigned:** (a) capture-recapture coverage of the record with intervals, (b) already known by source, (c) recorded later at every complete horizon with simultaneous intervals and counts; a check reads every plotted point back.
 - **Fig. 3 linked across panels:** the near-hull window is named in the schematic (a) and shaded in the premise panel (b) as in (c); the criterion line is labeled; panel d marks the smallest reliably detectable effect (exported as `fig3.mde`).
 - **Source Data workbooks (Nature Portfolio requirement):** `python -m ncr figures` now also writes one Excel workbook per figure to `work/figures/source_data/`, one sheet per panel. Every plotted record is included. Shares, Wilson and Bonferroni-adjusted intervals, coverage bounds and counts are Excel formulas, so they can be audited in Excel. Empty counts leave blank cells, never #DIV/0!. `openpyxl==3.1.5` is added to the requirements, and a new test checks the workbooks on the synthetic world.
-- **Figure lint in the pipeline:** a new figure check fails on overlapping or clipped text, hyphens used as minus signs, and axes whose tick labels mix decimal places; it runs on the study data and on the synthetic test world. Ticks are now chosen from the data range at nice steps with consistent decimals (a first fixed-tick version broke on the synthetic world and was replaced). Fig. 3c's two histogram sides now differ in greyscale (contrast ratio 1.09 -> about 1.6). Fig. 1 no longer clips the oldest record.
+- **Figure lint in the pipeline:** a new figure check fails on overlapping or clipped text, hyphens used as minus signs, and axes whose tick labels mix decimal places; it runs on the study data and on the synthetic test world. Ticks are chosen from the data range at nice steps with consistent decimals. Fig. 3c's two histogram sides now differ in greyscale (contrast ratio 1.09 -> about 1.6). Fig. 1 no longer clips the oldest record.
 - **Cross-figure consistency:** release names with years in every figure (as in Fig. 1); Fig. 2c names each release once and lists horizons; Fig. 2a uses the source swatches of Fig. 2b, so a filled black circle means "recorded later" throughout; Fig. 3 gives units on every energy label, writes "percentage points", and names the unstable side the same way in a and c; unused palette removed.
 - **Supplementary figures:** Supp. Fig. 1 keys every element, marks that the outcome sources continue before 2010, and shows the 1-yr reporting-lag buffer; Supp. Fig. 2 shows all three windows (10, 25, 50 meV/atom), as the text cites, against the labeled pre-specified limit, with true minus signs. New check: the figure draws every exported window, read back against the export.
 

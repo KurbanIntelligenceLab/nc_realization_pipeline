@@ -83,6 +83,10 @@ All commands are run as `python -m ncr --config config/study.json <command>`, in
 
 The converters (`convert-oqmd`, `convert-mp`, `export-cod`, `convert-cod`, `convert-oqmd-icsd`, `convert-mp-icsd`, `merge-experiments`) build the inputs from the original sources (level 3).
 
+## Repository history
+
+Commit `43f659e` (release 2.2.2) predates the final design. It contains a language-model labeling step and a literature-search step that were dropped before the analysis plan was fixed, together with working files from the AI-assisted development disclosed in the paper. Releases 2.4.0 and later hold the code and data for the paper.
+
 ## Citation
 
 See [`CITATION.cff`](CITATION.cff). Please also cite the data sources: OQMD, the Materials Project and COD.
