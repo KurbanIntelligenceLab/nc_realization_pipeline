@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.4.3 (26 October 2026)
+
+Figure 1 and its Source Data only; no estimate changes.
+- **Accurate outcome labels:** Figure 1 now labels its counts "recorded within N yr" and "not recorded within N yr", where N is the release's longest horizon of complete follow-up. The third count had read "no record", but six Materials Project predictions were first recorded in 2025 or 2026, after their two-year follow-up, so they do have a record. No analysis counts them, and no estimate changes.
+- **Every point visible:** points that share a date (year-only dates placed on 1 July) are now spaced evenly across the band without random offsets, so the nine Materials Project predictions first recorded in 2023 no longer overlap.
+- **Source Data:** the Figure 1 outcome columns are renamed to match, and the README explains the third count.
+
 ## 2.4.2 (26 October 2026)
 
 Documentation only.

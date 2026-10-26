@@ -53,11 +53,14 @@ def fig1(fd, path):
     order = sorted(led, key=lambda k: led[k]["date"])
     wb = Workbook()
     _readme(wb, "Source Data for Fig. 1", [
-        "Sheet Fig1_records: every plotted point, one row per prediction with a matching record.",
+        "Sheet Fig1_records: every plotted point, one row per prediction already known at release or "
+        "first recorded within its longest horizon of complete follow-up.",
         "  Earliest record is the decimal year of the earliest matching experimental structure record "
         "(year-only dates placed on 1 July); Years from release is a formula.",
         "Sheet Fig1_outcomes: the numbers printed in the figure. Counts are formulas over Fig1_records; "
-        "median ages are computed by the released code (ncr/analysis.py, _ledger).",
+        "median ages are computed by the released code (ncr/analysis.py, _ledger). Not recorded within "
+        "follow-up includes predictions first recorded only after their complete follow-up, which no "
+        "analysis counts.",
     ])
     rows, r = [], 2
     for k in order:
@@ -76,7 +79,7 @@ def fig1(fd, path):
         out.append([k, v["n"], f'=COUNTIFS(Fig1_records!A:A,A{i},Fig1_records!C:C,"Already known")',
                     f'=COUNTIFS(Fig1_records!A:A,A{i},Fig1_records!C:C,"Recorded later")', f"=B{i}-C{i}-D{i}",
                     v.get("age_median"), v["t_max"]])
-    _sheet(wb, "Fig1_outcomes", ["Release", "Predictions", "Already known", "Recorded later", "No record",
+    _sheet(wb, "Fig1_outcomes", ["Release", "Predictions", "Already known", "Recorded within follow-up", "Not recorded within follow-up",
                                  "Median age of already-known records (years)",
                                  "Longest horizon of complete follow-up (years)"], out)
     wb.save(path)

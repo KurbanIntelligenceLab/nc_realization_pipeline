@@ -144,7 +144,7 @@ def _swarm(values, half_height, rng, min_dx):
         if k == 1:
             offs[order[i]] = rng.uniform(-half_height, half_height)
         else:
-            offs[order[i:j + 1]] = np.linspace(-half_height, half_height, k) + rng.uniform(-0.03, 0.03, k)
+            offs[order[i:j + 1]] = np.linspace(-half_height, half_height, k)   # evenly spaced, none hidden
         i = j + 1
     return offs
 
@@ -179,11 +179,13 @@ def fig1(res, path):
         axr.axvspan(0, v["t_max"], ymin=(yv + 0.5 - 0.44) / len(order), ymax=(yv + 0.5 + 0.44) / len(order),
                     color=BAND, lw=0, zorder=0)
         if len(later):
-            axr.scatter(later, yv + _swarm(later, 0.28, rng, 0.25), s=13, color=LATER, lw=0, zorder=4)
+            axr.scatter(later, yv + _swarm(later, 0.40, rng, 0.25), s=10, color=LATER, lw=0, zorder=4)
         n_none = v["n"] - len(ages) - len(later)
         fig._ledger_counts[k] = (len(ages), len(later))
         frac = (yv + 0.5) / len(order)
-        lines = [(f"{len(ages):,}", " already known"), (f"{len(later):,}", " recorded later"), (f"{n_none:,}", " no record")]
+        t = f"{v['t_max']:g}"
+        lines = [(f"{len(ages):,}", " already known"), (f"{len(later):,}", f" recorded within {t} yr"),
+                 (f"{n_none:,}", f" not recorded within {t} yr")]
         for m, (num, lab) in enumerate(lines):
             yy = frac + (0.105 - m * 0.105) * 3 / len(order)
             axr.text(1.24, yy, num, transform=axr.transAxes, fontsize=6, ha="right", va="center",
@@ -210,7 +212,7 @@ def fig1(res, path):
     from matplotlib.patches import Patch
     handles = [Line2D([], [], ls="none", marker="o", ms=2.8, color=KNOWN, label="Earliest record before release (already known)"),
                Line2D([], [], ls="none", marker="v", ms=4.2, color=INK, label="Median age of these records"),
-               Line2D([], [], ls="none", marker="o", ms=3.8, color=LATER, label="First record after release (recorded later)"),
+               Line2D([], [], ls="none", marker="o", ms=3.2, color=LATER, label="First record after release (recorded later)"),
                Patch(color=BAND, label="Complete follow-up")]
     axl.legend(handles=handles, loc="lower left", bbox_to_anchor=(0.0, 1.06), ncol=2, columnspacing=1.2,
                handlelength=1.0, labelspacing=0.3)

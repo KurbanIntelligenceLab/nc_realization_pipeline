@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software or data, please cite the paper and this repository."
 title: "nc_realization_pipeline: code and data for \"The experimental fate of computational predictions of stable inorganic compounds\""
 type: software
-version: 2.4.2
+version: 2.4.3
 date-released: 2026-10-26
 license: MIT
 repository-code: "https://github.com/KurbanIntelligenceLab/nc_realization_pipeline"
