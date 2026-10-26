@@ -1,6 +1,6 @@
 # nc_realization_pipeline
 
-Code and data for **"The experimental fate of computational predictions of stable inorganic compounds"** by Hasan Kurban and Mustafa Kurban.
+Code and data for **"Thousands of inorganic compounds released as new and stable by computational databases were already known"** by Hasan Kurban and Mustafa Kurban.
 
 The study follows every composition that three dated public database releases displayed as stable and new:
 - OQMD v1.0 (April 2014);

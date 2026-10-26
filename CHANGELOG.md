@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.4.4 (26 October 2026)
+
+Documentation only: `README.md` and `CITATION.cff` carry the paper's revised title, "Thousands of inorganic compounds released as new and stable by computational databases were already known". No code, data or estimate changes.
+
 ## 2.4.3 (26 October 2026)
 
 Figure 1 and its Source Data only; no estimate changes.
