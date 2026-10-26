@@ -1,6 +1,6 @@
-"""Release snapshots: reading, converting and recomputing the decomposition energy.
+"""Release snapshots: reading them and recomputing the decomposition energy.
 
-A snapshot is one CSV per database release (format in DATA_FORMATS.md). Required
+A snapshot is one CSV per database release (format in docs/DATA.md). Required
 columns: entry_id, formula, energy_per_atom, is_hypothetical. Optional columns:
 displayed_stable, displayed_dhd, structure_file, spacegroup_number, prototype,
 origin_icsd_id, deprecated. A config "columns" mapping renames your own column
@@ -8,16 +8,13 @@ names to these.
 """
 from __future__ import annotations
 
-import bz2
-import gzip
-import json
 import math
 import os
 from collections import defaultdict
 from concurrent.futures import ProcessPoolExecutor
 from itertools import combinations
 
-from .util import log, read_csv, truthy, write_csv
+from .util import log, read_csv, truthy
 
 REQUIRED = ["entry_id", "formula", "energy_per_atom", "is_hypothetical"]
 OPTIONAL = ["displayed_stable", "displayed_dhd", "structure_file", "spacegroup_number",
@@ -52,56 +49,6 @@ def read_snapshot(path: str, columns: dict | None = None) -> list[dict]:
 
 
 # ----------------------------------------------------------------------------
-# Converter from pymatgen ComputedEntry / ComputedStructureEntry JSON dumps
-# ----------------------------------------------------------------------------
-def _open_any(path):
-    if path.endswith(".gz"):
-        return gzip.open(path, "rt", encoding="utf-8")
-    if path.endswith(".bz2"):
-        return bz2.open(path, "rt", encoding="utf-8")
-    return open(path, encoding="utf-8")
-
-
-def convert_entries(in_path: str, out_csv: str, hypothetical_ids: str | None = None,
-                    all_hypothetical: bool = False, cif_dir: str | None = None,
-                    id_field: str = "entry_id") -> int:
-    """Write a snapshot CSV from a JSON file holding a list of pymatgen entry
-    dictionaries (or {"entries": [...]}). Energies are the entries' corrected
-    energies per atom. Which entries are hypothetical is NOT in a generic entry
-    dump, so it must be given: a file of hypothetical IDs (one per line) or
-    --all-hypothetical when every entry in the file is a hypothetical prediction."""
-    from pymatgen.entries.computed_entries import ComputedEntry, ComputedStructureEntry
-    if not hypothetical_ids and not all_hypothetical:
-        raise ValueError("say which entries are hypothetical: --hypothetical-ids FILE or --all-hypothetical")
-    hyp = None
-    if hypothetical_ids:
-        with open(hypothetical_ids, encoding="utf-8") as fh:
-            hyp = {ln.strip() for ln in fh if ln.strip()}
-    with _open_any(in_path) as fh:
-        data = json.load(fh)
-    items = data["entries"] if isinstance(data, dict) and "entries" in data else data
-    if cif_dir:
-        os.makedirs(cif_dir, exist_ok=True)
-    rows = []
-    for d in items:
-        cls = ComputedStructureEntry if "structure" in d else ComputedEntry
-        e = cls.from_dict(d)
-        eid = str(d.get(id_field) or e.entry_id or d.get("data", {}).get(id_field) or "")
-        if not eid:
-            raise ValueError(f"an entry has no '{id_field}'; pass --id-field")
-        row = {"entry_id": eid, "formula": e.composition.formula.replace(" ", ""),
-               "energy_per_atom": e.energy_per_atom,
-               "is_hypothetical": 1 if (all_hypothetical or eid in hyp) else 0}
-        if cif_dir and cls is ComputedStructureEntry:
-            p = os.path.join(cif_dir, f"{eid.replace('/', '_')}.cif")
-            e.structure.to(filename=p)
-            row["structure_file"] = os.path.abspath(p)
-        rows.append(row)
-    write_csv(out_csv, rows, REQUIRED + ["structure_file"])
-    return len(rows)
-
-
-# ----------------------------------------------------------------------------
 # Decomposition energy over a whole snapshot
 # ----------------------------------------------------------------------------
 def _chemsys(formula: str) -> str:
@@ -129,7 +76,7 @@ def _hull_for_system(args):
             # Energy above the hull for anything not on it (including higher-energy polymorphs of a
             # stable composition); the (negative) phase-separation energy only for hull members.
             # get_phase_separation_energy alone scores a higher polymorph against the hull without
-            # its own composition, which wrongly makes it look stable (fixed in pipeline 1.5).
+            # its own composition, which wrongly makes it look stable.
             eh = pd.get_e_above_hull(by_id[t])
             if eh is not None and eh > 1e-8:
                 out[t] = (float(eh), "")

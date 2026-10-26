@@ -9,8 +9,8 @@ import os
 import sys
 import time
 
-YEAR_ONLY_MONTH, YEAR_ONLY_DAY = 7, 1      # Table S1: year-only dates set to 1 July
-MONTH_ONLY_DAY = 15                        # implementation choice (README, "Choices to confirm")
+YEAR_ONLY_MONTH, YEAR_ONLY_DAY = 7, 1      # Supplementary Table 1: year-only dates set to 1 July
+MONTH_ONLY_DAY = 15                        # Supplementary Table 1: month-only release dates set to the 15th
 
 
 def parse_date(s):
@@ -53,8 +53,13 @@ def sha256_file(path: str) -> str:
 
 
 def read_csv(path: str) -> list[dict]:
+    """Read a CSV file, plain or gzip-compressed (.csv.gz)."""
     if not os.path.exists(path):
         raise FileNotFoundError(f"missing input file: {path}")
+    if path.endswith(".gz"):
+        import gzip
+        with gzip.open(path, "rt", newline="", encoding="utf-8-sig") as fh:
+            return list(csv.DictReader(fh))
     with open(path, newline="", encoding="utf-8-sig") as fh:
         return list(csv.DictReader(fh))
 
@@ -114,7 +119,8 @@ def log(msg: str) -> None:
 
 
 class Manifest:
-    """Append-only record of inputs, hashes, seeds and versions (work/manifest.json)."""
+    """Append-only record of inputs, checksums and software versions (work/manifest.json).
+    Paths are stored relative to the directory of the configuration file."""
 
     def __init__(self, workdir: str):
         self.path = os.path.join(workdir, "manifest.json")
@@ -134,7 +140,7 @@ class Manifest:
 
 def versions() -> dict:
     out = {"python": sys.version.split()[0]}
-    for mod in ("numpy", "pymatgen", "matplotlib", "anthropic"):
+    for mod in ("numpy", "pymatgen", "matplotlib", "pymysql"):
         try:
             from importlib.metadata import version
             out[mod] = version(mod)

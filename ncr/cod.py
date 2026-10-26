@@ -1,14 +1,14 @@
 """COD (Crystallography Open Database): export from its public read-only MySQL server and
-conversion to the experimental-reports table read by `dbmatch`.
+conversion to the experimental-records table read by the matching step.
 
-Rules, fixed from the `data` table listing (535,176 rows when checked):
+Rules, set from the `data` table (535,176 rows on 25 October 2026):
   formula       `formula` with the surrounding dashes removed, falling back to `calcformula`
-  date          `year` is the publication year; year-only dates are set to 1 July (Table S1).
+  date          `year` is the publication year; year-only dates are set to 1 July (Supplementary Table 1).
                 COD's `date` column is the last modification date and is not used
   experimental  rows with method = 'theoretical' or status = 'retracted' are excluded
   high pressure cellpressure or diffrpressure above 1 GPa (1e6 kPa); an implementation choice
   disorder      flags contains 'has disorder'
-CIF files are not exported here; `fetch-cod-cifs` downloads them only for matched entries.
+CIF files are not exported; all matching in this study is composition-level.
 """
 from __future__ import annotations
 

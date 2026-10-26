@@ -1,0 +1,12 @@
+{
+  "fig2_axes_start_at_zero": true,
+  "fig3_axes_start_at_zero": true,
+  "min_font_at_least_5pt": true,
+  "max_font_at_most_8pt": true,
+  "only_black_or_white_text": true,
+  "strokes_at_most_1pt": true,
+  "fig1_points_match_estimates": true,
+  "fig2c_points_match_estimates": true,
+  "figS2_shows_every_window": true,
+  "no_overlap_clipping_hyphen_or_mixed_decimals": true
+}

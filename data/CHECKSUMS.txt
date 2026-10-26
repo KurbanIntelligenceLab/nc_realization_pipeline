@@ -1,0 +1,6 @@
+# SHA-256 of the uncompressed inputs used in the study (as recorded in data_derived/manifest.json).
+# Check with:  gunzip -c data/snapshots/oqmd_v1_0.csv.gz | shasum -a 256
+524ddcf5bbf3b138c016ccf66797c002497b1f205068e9bcfb47e6699eafe81e  snapshots/oqmd_v1_0.csv
+d499063efed8569813821f0d987b015f76e3fdbc1a81613bf03aba7671860bc0  snapshots/oqmd_v1_1.csv
+0fdf7530666494449edf4a59ccaff20287ab5160838643a9402733db3ba974a2  snapshots/mp_2022_10_28.csv
+e5ffad558fd0d9b4eb74a30980d2be1a1eb720c0ec4f3ec1c2a351bc403b1356  experiments/experimental_records.csv

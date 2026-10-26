@@ -36,6 +36,43 @@
         "share": 0.3333333333333333
       }
     },
+    "by_chemistry_class": {
+      "halide": {
+        "n": 2989,
+        "found": 1891,
+        "share": 0.6326530612244898
+      },
+      "oxide": {
+        "n": 6584,
+        "found": 4284,
+        "share": 0.6506682867557716
+      },
+      "chalcogenide": {
+        "n": 3000,
+        "found": 1704,
+        "share": 0.568
+      },
+      "pnictide": {
+        "n": 2268,
+        "found": 1147,
+        "share": 0.5057319223985891
+      },
+      "intermetallic": {
+        "n": 6681,
+        "found": 2831,
+        "share": 0.4237389612333483
+      },
+      "carbide-boride": {
+        "n": 2608,
+        "found": 891,
+        "share": 0.3416411042944785
+      },
+      "hydride": {
+        "n": 357,
+        "found": 159,
+        "share": 0.44537815126050423
+      }
+    },
     "found_with_report_dated_on_or_before_release": 12779
   },
   "oqmd_v1_1": {
@@ -72,6 +109,43 @@
         "n": 13,
         "found": 8,
         "share": 0.6153846153846154
+      }
+    },
+    "by_chemistry_class": {
+      "halide": {
+        "n": 3360,
+        "found": 2114,
+        "share": 0.6291666666666667
+      },
+      "oxide": {
+        "n": 7866,
+        "found": 5064,
+        "share": 0.6437833714721587
+      },
+      "chalcogenide": {
+        "n": 3267,
+        "found": 1837,
+        "share": 0.5622895622895623
+      },
+      "pnictide": {
+        "n": 2580,
+        "found": 1290,
+        "share": 0.5
+      },
+      "intermetallic": {
+        "n": 7363,
+        "found": 3141,
+        "share": 0.42659242156729593
+      },
+      "carbide-boride": {
+        "n": 2791,
+        "found": 936,
+        "share": 0.3353636689358653
+      },
+      "hydride": {
+        "n": 399,
+        "found": 173,
+        "share": 0.43358395989974935
       }
     },
     "found_with_report_dated_on_or_before_release": 14467
@@ -115,6 +189,43 @@
         "n": 9,
         "found": 4,
         "share": 0.4444444444444444
+      }
+    },
+    "by_chemistry_class": {
+      "oxide": {
+        "n": 16486,
+        "found": 9189,
+        "share": 0.5573820211088196
+      },
+      "halide": {
+        "n": 5930,
+        "found": 3333,
+        "share": 0.5620573355817875
+      },
+      "pnictide": {
+        "n": 3523,
+        "found": 1624,
+        "share": 0.4609707635537894
+      },
+      "chalcogenide": {
+        "n": 4552,
+        "found": 2370,
+        "share": 0.5206502636203867
+      },
+      "hydride": {
+        "n": 374,
+        "found": 176,
+        "share": 0.47058823529411764
+      },
+      "carbide-boride": {
+        "n": 3302,
+        "found": 1076,
+        "share": 0.3258631132646881
+      },
+      "intermetallic": {
+        "n": 9155,
+        "found": 3377,
+        "share": 0.36886947023484434
       }
     },
     "found_with_report_dated_on_or_before_release": 21114

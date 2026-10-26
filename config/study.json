@@ -1,0 +1,27 @@
+{
+  "workdir": "../work",
+  "cutoff_date": "2026-10-25",
+  "reconstruction_tolerance": 0.01,
+  "releases": [
+    {"source": "OQMD", "release_id": "oqmd_v1_0", "label": "OQMD v1.0 (2014)", "release_date": "2014-04",
+     "path": "../data/snapshots/oqmd_v1_0.csv.gz", "granularity": "composition", "tau_ev_per_atom": 0.0,
+     "side_from": "displayed", "expected_counts": {"stable_new_compositions": 2860}},
+    {"source": "OQMD", "release_id": "oqmd_v1_1", "label": "OQMD v1.1 (2016)", "release_date": "2016-10",
+     "path": "../data/snapshots/oqmd_v1_1.csv.gz", "granularity": "composition", "tau_ev_per_atom": 0.0,
+     "side_from": "displayed",
+     "expected_counts": {"stable_new_compositions": 2280, "stable_new_heusler_type_compositions": 1602}},
+    {"source": "Materials Project", "release_id": "mp_2022_10_28", "label": "Materials Project (2022)",
+     "release_date": "2022-10-28", "path": "../data/snapshots/mp_2022_10_28.csv.gz", "granularity": "composition",
+     "tau_ev_per_atom": 0.0, "side_from": "displayed"}
+  ],
+  "experiments": {"path": "../data/experiments/experimental_records.csv.gz"},
+  "horizons_years": [3, 5, 10],
+  "horizons_by_source": {"Materials Project": [2]},
+  "threshold": {"sources": ["OQMD"], "windows_mev": [10, 25, 50], "horizon_years": 5,
+                "running_variable": "displayed", "block_scheme": "class_en_nel",
+                "assumed_outcome_rate": 0.05, "effect_of_interest": 0.03},
+  "premise": {"pairs": [{"a": "oqmd_v1_0", "b": "mp_2022_10_28", "match": "composition"},
+                        {"a": "oqmd_v1_1", "b": "mp_2022_10_28", "match": "composition"}],
+              "edges_mev": [0, 10, 25, 50, 100, 200, 1000000000]},
+  "seeds": {"one_entry_per_chemical_system": 20261211}
+}

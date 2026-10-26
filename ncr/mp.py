@@ -1,7 +1,7 @@
 """Converter from a Materials Project build (AWS Open Data, collections/<date>/thermo and
 provenance) to a release snapshot.
 
-Rules, fixed from the field listing of the 2022-10-28 build:
+Rules, set from the field listing of the 2022-10-28 build:
   thermo type   chosen by the record's own `thermo_type` field (folder names are not trusted;
                 the report counts records by folder and by field)
   energy        formation_energy_per_atom of the chosen thermo type

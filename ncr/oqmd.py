@@ -1,13 +1,13 @@
 """Converter from OQMD MySQL exports (two tab-separated files) to a release snapshot.
 
-Rules, fixed from the diagnostics run on qmdb v1.0 (April 2014) and v1.1 (October 2016):
+Rules, set from the contents of qmdb v1.0 (April 2014) and v1.1 (October 2016):
   energy        formation_energies.delta_e for the fit 'standard' (the only fit in both)
   displayed     formation_energies.stability <= 0 means displayed as stable; NULL = unknown
   several rows  per entry (v1.0: 48,484 entries, 32,861 with values differing by more than
                 1 meV/atom): the row with the lowest formation energy is kept, because every
                 row is a point on the convex hull, so an entry is stable exactly when its
-                lowest row is. The hull step then checks this against OQMD's displayed
-                stability (recomputed_agrees_with_displayed_share in x0.json)
+                lowest row is. The reconstruction check compares the recomputed hull with
+                OQMD's displayed stability
   duplicates    entries with duplicate_of_id set to another entry are dropped
   origin        path under /libraries/icsd/ = experimental origin; '/test/' paths = test
                 entries (kept in the hull, never in cohorts); other compounds = hypothetical
@@ -22,7 +22,6 @@ Rules, fixed from the diagnostics run on qmdb v1.0 (April 2014) and v1.1 (Octobe
 from __future__ import annotations
 
 import csv
-import math
 import sys
 
 from .util import log, write_csv, write_json

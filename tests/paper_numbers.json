@@ -1,0 +1,86 @@
+{
+ "_description": "Headline numbers reported in the paper. compare_results.py and the tests check a regenerated run against them.",
+ "pre_existence": {
+  "oqmd::oqmd_v1_0": {
+   "k": 103,
+   "n": 2860
+  },
+  "oqmd::oqmd_v1_1": {
+   "k": 43,
+   "n": 692
+  },
+  "materials_project": {
+   "k": 2057,
+   "n": 10966
+  }
+ },
+ "realized": {
+  "oqmd::oqmd_v1_0": {
+   "3": 2,
+   "5": 3,
+   "10": 4
+  },
+  "oqmd::oqmd_v1_1": {
+   "3": 0,
+   "5": 0
+  },
+  "materials_project": {
+   "2": 11
+  }
+ },
+ "capture_recapture": {
+  "oqmd::oqmd_v1_0": {
+   "n_COD": 73,
+   "n_ICSD_derived": 50,
+   "both": 18
+  },
+  "materials_project": {
+   "n_COD": 1669,
+   "n_ICSD_derived": 630,
+   "both": 288
+  }
+ },
+ "threshold_25": {
+  "N_A": 1418,
+  "N_B": 3783,
+  "events_A": 3,
+  "events_B": 1,
+  "effect_estimate": 0.0015590466202506138
+ },
+ "density_test": {
+  "n_left": 375,
+  "n_right": 710
+ },
+ "premise": {
+  "oqmd_v1_0 vs mp_2022_10_28": {
+   "within_25_n": 11539,
+   "within_25_rate": 0.2692607678308346,
+   "check_a_passes": true
+  },
+  "oqmd_v1_1 vs mp_2022_10_28": {
+   "within_25_n": 13893,
+   "within_25_rate": 0.2939609875476859,
+   "check_a_passes": true
+  }
+ },
+ "power_primary_blocks": {
+  "max_abs_blocked_smd_25": 0.029085977306308432,
+  "N_A_usable": 1408,
+  "N_B_usable": 3738
+ },
+ "robustness": {
+  "composition_tolerance_halved_mp_pre": 1974,
+  "composition_tolerance_doubled_mp_pre": 2193,
+  "composition_tolerance_doubled_oqmd_v1_0_realized_10y": 6
+ },
+ "cod_coverage_of_known": {
+  "oqmd_v1_0": {
+   "icsd_origin_compositions": 24487,
+   "found_in_reports": 12907
+  },
+  "mp_2022_10_28": {
+   "icsd_origin_compositions": 43322,
+   "found_in_reports": 21145
+  }
+ }
+}

@@ -1,7 +1,10 @@
 .venv/
 __pycache__/
 *.pyc
+.pytest_cache/
 .DS_Store
-# raw downloads and large inputs are never committed (see data_derived/README.md)
+work/
+raw/
+# raw downloads are never committed; the converted inputs in data/ are
 *.sql.gz
 *.tsv

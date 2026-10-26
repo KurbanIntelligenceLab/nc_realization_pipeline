@@ -1,6 +1,0 @@
-# Python 3.12. Install inside a virtual environment:  pip install -r requirements-pipeline.txt
-numpy==2.4.4
-pymatgen==2026.10.24
-matplotlib==3.10.8
-anthropic==2.3.0
-pymysql==1.2.3

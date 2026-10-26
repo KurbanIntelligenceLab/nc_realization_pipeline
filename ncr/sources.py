@@ -1,5 +1,5 @@
 """Dated experimental-structure sources derived from ICSD that are openly available, and the
-merge of all sources into the single experimental-reports table read by `dbmatch`.
+merge of all sources into the single experimental-records table read by the matching step.
 
   OQMD-ICSD  ICSD-origin entries of an OQMD release with the publication year of their
              reference (in v1.8 the years end in 2012)
