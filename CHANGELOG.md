@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.5 (26 October 2026)
+
+Two exploratory checks and the paper's final title; no estimate changes.
+- **`scripts/novelty_checks.py`** (output `data_derived/checks/novelty_checks.json`): for the predictions already known at release, whether a matching COD record dated by the release has the predicted space group (25.0%, 13.0% and 27.4% for OQMD v1.0, OQMD v1.1 and the Materials Project), and the share of already-known Materials Project compositions whose earliest record predates the project's start in 2011 (92.4%). Both were added after the outcomes were measured and are reported as exploratory.
+- **README and CITATION:** the title is "Thousands of inorganic compositions labeled hypothetical and stable already had recorded experimental structures", and the results table names the cohorts accordingly.
+
 ## 2.4.4 (26 October 2026)
 
 Documentation only: `README.md` and `CITATION.cff` carry the paper's revised title, "Thousands of inorganic compounds released as new and stable by computational databases were already known". No code, data or estimate changes.

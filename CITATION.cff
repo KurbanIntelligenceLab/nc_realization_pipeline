@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this software or data, please cite the paper and this repository."
-title: "nc_realization_pipeline: code and data for \"Thousands of inorganic compounds released as new and stable by computational databases were already known\""
+title: "nc_realization_pipeline: code and data for \"Thousands of inorganic compositions labeled hypothetical and stable already had recorded experimental structures\""
 type: software
-version: 2.4.4
+version: 2.4.5
 date-released: 2026-10-26
 license: MIT
 repository-code: "https://github.com/KurbanIntelligenceLab/nc_realization_pipeline"

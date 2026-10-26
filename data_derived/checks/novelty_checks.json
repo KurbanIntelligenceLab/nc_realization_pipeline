@@ -1,0 +1,30 @@
+{
+  "note": "exploratory; added after the outcomes were measured",
+  "structure": {
+    "oqmd_v1_0": {
+      "already_known": 103,
+      "with_COD_record_by_release": 72,
+      "COD_record_in_predicted_space_group": 18,
+      "share": 0.25
+    },
+    "oqmd_v1_1": {
+      "already_known": 43,
+      "with_COD_record_by_release": 23,
+      "COD_record_in_predicted_space_group": 3,
+      "share": 0.13043478260869565
+    },
+    "mp_2022_10_28": {
+      "already_known": 2057,
+      "with_COD_record_by_release": 1720,
+      "COD_record_in_predicted_space_group": 472,
+      "share": 0.2744186046511628
+    }
+  },
+  "timing": {
+    "mp_2022_10_28": {
+      "already_known": 2057,
+      "earliest_record_before_2011": 1900,
+      "share": 0.9236752552260573
+    }
+  }
+}

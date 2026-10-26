@@ -1,6 +1,6 @@
 # nc_realization_pipeline
 
-Code and data for **"Thousands of inorganic compounds released as new and stable by computational databases were already known"** by Hasan Kurban and Mustafa Kurban.
+Code and data for **"Thousands of inorganic compositions labeled hypothetical and stable already had recorded experimental structures"** by Hasan Kurban and Mustafa Kurban.
 
 The study follows every composition that three dated public database releases displayed as stable and new:
 - OQMD v1.0 (April 2014);
@@ -20,11 +20,13 @@ All rates are lower bounds on predictions with a recorded experimental structure
 
 | | OQMD v1.0 (2014) | OQMD v1.1 (2016) | Materials Project (2022) |
 |---|---|---|---|
-| Predictions released as new | 2,860 | 692 | 10,966 |
+| Compositions labeled hypothetical and stable | 2,860 | 692 | 10,966 |
 | Already had a recorded structure | 103 (3.6%) | 43 (6.2%) | 2,057 (18.8%) |
 | Acquired one later | 4 within 10 years (0.14%) | 0 within 5 years | 11 within 2 years (0.10%) |
 
 **Threshold window.** Within ±25 meV/atom of the OQMD stability threshold, 3 of 1,418 compounds labeled stable and 1 of 3,783 labeled unstable acquired a recorded structure within five years. Events are too rare to estimate the effect of the label: the design could reliably detect only differences above 0.24 percentage points (80% power). An exploratory bound, added after the outcomes were seen, puts the effect below about 0.6 percentage points.
+
+**Exploratory checks on the already-known compositions** (`scripts/novelty_checks.py`, output in `data_derived/checks/novelty_checks.json`). Matching is at the level of composition. Among already-known predictions with a COD record dated by the release, 25.0% (OQMD v1.0), 13.0% (OQMD v1.1) and 27.4% (Materials Project) had such a record in the predicted space group; the others have recorded structures of the same composition in another space group. For 1,900 of the 2,057 already-known Materials Project compositions (92.4%), the earliest record predates 2011, when the project started, so these cannot be later realizations of its predictions.
 
 ## Quick start
 
