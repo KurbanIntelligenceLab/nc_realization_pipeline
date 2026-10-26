@@ -48,3 +48,24 @@ def test_released_results_match_the_paper():
     with open(os.path.join(ROOT, "tests", "paper_numbers.json"), encoding="utf-8") as fh:
         ref = json.load(fh)
     assert cr.diff(cr.collect(work), ref) == []
+
+
+def test_rerun_reproduces_the_frozen_files():
+    """The released derived files equal the checksums frozen before any prediction was matched,
+    except for one documented last-digit difference in the Materials Project cohort."""
+    freeze = os.path.join(ROOT, "data_derived", "plan_freeze.txt")
+    if not os.path.exists(freeze) or not os.path.exists(os.path.join(ROOT, "data_derived", "cohorts")):
+        pytest.skip("released derived data not present")
+    frozen = {}
+    with open(freeze, encoding="utf-8") as fh:
+        for line in fh:
+            parts = line.split()
+            if len(parts) == 2 and len(parts[0]) == 64:
+                frozen[os.path.basename(parts[1])] = parts[0]
+
+    def sha(rel):
+        with open(os.path.join(ROOT, "data_derived", rel), "rb") as fh:
+            return hashlib.sha256(fh.read()).hexdigest()
+    for rel in ("cohorts/oqmd.csv", "cohorts/threshold__oqmd.csv", "checks/threshold_blocks__oqmd.json"):
+        assert sha(rel) == frozen[os.path.basename(rel)], rel
+    assert frozen["all_experiments.csv"] in {d for d, _ in _checksums()}

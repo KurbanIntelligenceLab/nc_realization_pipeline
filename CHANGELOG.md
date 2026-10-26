@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.4.1 (26 October 2026)
+
+Documentation and provenance only; no code path or estimate changes.
+- **Provenance restored:** `data_derived/plan_freeze.txt` (the plan frozen before matching) and the original study's manifest (`data_derived/study_manifest.json`), which the 2.4.0 update had replaced.
+- **Frozen-file identity test:** the released OQMD cohort, threshold cohort and blocking scheme equal their frozen checksums byte for byte. The released experimental records equal theirs. The one-value difference in the Materials Project cohort is documented.
+- **Exact environment:** `requirements-lock.txt` lists every package of the environment that reproduced the paper.
+- **README:** the threshold result is stated as in the paper (detectable difference 0.24 percentage points; the 0.6 bound is exploratory).
+
 ## 2.4.0 (26 October 2026)
 
 Changes after the first public release. Every estimate in the paper is unchanged; the coverage fix changes what a rerun of the coverage check computes, so that it reproduces the published 52.7%.

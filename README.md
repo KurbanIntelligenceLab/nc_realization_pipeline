@@ -12,7 +12,7 @@ Each prediction is matched deterministically against dated records of experiment
 - the ICSD-derived records of the Materials Project;
 - the ICSD-derived records of OQMD.
 
-Near the stability threshold, compounds just inside and just outside the stable label are compared to bound the effect of the label itself.
+Near the stability threshold, compounds just inside and just outside the stable label are compared to estimate the effect of the label itself.
 
 ## Main results
 
@@ -24,7 +24,7 @@ All rates are lower bounds on predictions with a recorded experimental structure
 | Already had a recorded structure | 103 (3.6%) | 43 (6.2%) | 2,057 (18.8%) |
 | Acquired one later | 4 within 10 years (0.14%) | 0 within 5 years | 11 within 2 years (0.10%) |
 
-**Threshold window.** Within ±25 meV/atom of the OQMD stability threshold, 3 of 1,418 compounds labeled stable and 1 of 3,783 labeled unstable acquired a recorded structure within five years. The effect of the label is therefore at most about 0.6 percentage points.
+**Threshold window.** Within ±25 meV/atom of the OQMD stability threshold, 3 of 1,418 compounds labeled stable and 1 of 3,783 labeled unstable acquired a recorded structure within five years. Events are too rare to estimate the effect of the label: the design could reliably detect only differences above 0.24 percentage points (80% power). An exploratory bound, added after the outcomes were seen, puts the effect below about 0.6 percentage points.
 
 ## Quick start
 
@@ -37,6 +37,8 @@ python3.11 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt -r requirements-dev.txt
 python -m pytest -q
 ```
+
+`requirements.txt` pins the direct dependencies. `requirements-lock.txt` lists every package of the environment that reproduced the paper with release 2.4.0 (Python 3.11.17, macOS arm64); install it instead to match that environment exactly.
 
 The tests run in about a minute. They cover three things:
 - an end-to-end run on a synthetic world with known truth;
