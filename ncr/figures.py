@@ -412,7 +412,7 @@ def fig3(res, path):
     if mde:
         for m, xv in enumerate((-100 * mde, 100 * mde)):
             axc.axvline(xv, color=INK, lw=0.6, ls=(0, (1.5, 1.5)), zorder=1,
-                        label=f"Smallest reliably detectable effect (\u00b1{100 * mde:.2f})" if m else None)
+                        label=f"Detectable at 80% power, approx. (\u00b1{100 * mde:.2f})" if m else None)
         axc.legend(loc="lower left", bbox_to_anchor=(-0.02, 1.0), handlelength=1.6)
     axc.axvline(0, color=INK, lw=0.5)
     for r, yv in zip(rows, yy):

@@ -26,5 +26,28 @@
       "earliest_record_before_2011": 1900,
       "share": 0.9236752552260573
     }
+  },
+  "exact_composition": {
+    "oqmd_v1_0": {
+      "predictions": 2860,
+      "already_known_within_tolerance": 103,
+      "already_known_exact": 98,
+      "share_within_tolerance": 0.03601398601398601,
+      "share_exact": 0.03426573426573427
+    },
+    "oqmd_v1_1": {
+      "predictions": 692,
+      "already_known_within_tolerance": 43,
+      "already_known_exact": 39,
+      "share_within_tolerance": 0.06213872832369942,
+      "share_exact": 0.05635838150289017
+    },
+    "mp_2022_10_28": {
+      "predictions": 10966,
+      "already_known_within_tolerance": 2057,
+      "already_known_exact": 1779,
+      "share_within_tolerance": 0.18757979208462522,
+      "share_exact": 0.1622287069122743
+    }
   }
 }

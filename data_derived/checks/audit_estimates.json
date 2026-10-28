@@ -1,0 +1,160 @@
+{
+  "note": "exploratory; one-author record-level audit; added after the outcomes were measured",
+  "n_audited": 60,
+  "confirmed_rule": 53,
+  "confirmed_exact": 49,
+  "experimentally_determined": 56,
+  "composition_exact": 53,
+  "strata": {
+    "mp_2022_10_28 | COD": {
+      "size": 1691,
+      "audited": 10,
+      "confirmed_rule": 9,
+      "confirmed_exact": 8
+    },
+    "mp_2022_10_28 | ICSD-derived": {
+      "size": 366,
+      "audited": 10,
+      "confirmed_rule": 6,
+      "confirmed_exact": 6
+    },
+    "oqmd_v1_0 | COD": {
+      "size": 70,
+      "audited": 10,
+      "confirmed_rule": 9,
+      "confirmed_exact": 8
+    },
+    "oqmd_v1_0 | ICSD-derived": {
+      "size": 33,
+      "audited": 10,
+      "confirmed_rule": 9,
+      "confirmed_exact": 9
+    },
+    "oqmd_v1_1 | COD": {
+      "size": 22,
+      "audited": 10,
+      "confirmed_rule": 10,
+      "confirmed_exact": 8
+    },
+    "oqmd_v1_1 | ICSD-derived": {
+      "size": 21,
+      "audited": 10,
+      "confirmed_rule": 10,
+      "confirmed_exact": 10
+    }
+  },
+  "releases": {
+    "oqmd_v1_0": {
+      "predictions": 2860,
+      "already_known": 103,
+      "confirmed_share_rule": [
+        0.8999999999999999,
+        0.6854767507963396,
+        0.9705035661242041
+      ],
+      "adjusted_preexistence_rule": [
+        0.03241258741258741,
+        0.024686750116091952,
+        0.03495170185692064
+      ],
+      "adjusted_count_rule": [
+        92.69999999999999,
+        70.60410533202298,
+        99.96186731079302
+      ],
+      "confirmed_share_exact": [
+        0.8320388349514563,
+        0.6047783153282849,
+        0.9415274224267666
+      ],
+      "adjusted_preexistence_exact": [
+        0.02996503496503496,
+        0.021780477789794875,
+        0.03390815542306187
+      ],
+      "adjusted_count_exact": [
+        85.69999999999999,
+        62.29216647881334,
+        96.97732450995696
+      ]
+    },
+    "oqmd_v1_1": {
+      "predictions": 692,
+      "already_known": 43,
+      "confirmed_share_rule": [
+        1.0,
+        0.8415922207700799,
+        0.9987630816005024
+      ],
+      "adjusted_preexistence_rule": [
+        0.06213872832369942,
+        0.052295470365770855,
+        0.06206186778731445
+      ],
+      "adjusted_count_rule": [
+        43.0,
+        36.18846549311343,
+        42.9468125088216
+      ],
+      "confirmed_share_exact": [
+        0.8976744186046511,
+        0.706643222437681,
+        0.9673599669905871
+      ],
+      "adjusted_preexistence_exact": [
+        0.05578034682080925,
+        0.04390991122083856,
+        0.060110518180050934
+      ],
+      "adjusted_count_exact": [
+        38.6,
+        30.385658564820282,
+        41.596478580595246
+      ]
+    },
+    "mp_2022_10_28": {
+      "predictions": 10966,
+      "already_known": 2057,
+      "confirmed_share_rule": [
+        0.8466212931453573,
+        0.6075842185036425,
+        0.9355355482538744
+      ],
+      "adjusted_preexistence_rule": [
+        0.15880904614262265,
+        0.11397052138081275,
+        0.1754875636292376
+      ],
+      "adjusted_count_rule": [
+        1741.5,
+        1249.8007374619926,
+        1924.3966227582196
+      ],
+      "confirmed_share_exact": [
+        0.7644141954302383,
+        0.5088448610285135,
+        0.9013469310714297
+      ],
+      "adjusted_preexistence_exact": [
+        0.14338865584534016,
+        0.09544901323505857,
+        0.1690744699264938
+      ],
+      "adjusted_count_exact": [
+        1572.4,
+        1046.6938791356522,
+        1854.070637213931
+      ]
+    }
+  },
+  "adjusted_entries_rule": [
+    1877.2,
+    1379.1178993581154,
+    2055.030445757433
+  ],
+  "adjusted_entries_exact": [
+    1696.7,
+    1166.4565682044447,
+    1974.7738801029393
+  ]
+}

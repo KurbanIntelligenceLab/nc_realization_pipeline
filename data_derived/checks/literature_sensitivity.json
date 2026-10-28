@@ -1,0 +1,32 @@
+{
+  "note": "exploratory; added after the outcomes were measured",
+  "events_in_primary_window": [
+    "OQMD::AlAg",
+    "OQMD::EuNbO3",
+    "OQMD::MgSc2Ru",
+    "OQMD::Li2AgGe"
+  ],
+  "recoded_as_non_events": [
+    "OQMD::EuNbO3"
+  ],
+  "database_defined": {
+    "events_stable": 3,
+    "n_stable": 1418,
+    "events_unstable": 1,
+    "n_unstable": 3783,
+    "estimate_pp": 0.15590466202506137,
+    "ci_low_pp": -0.06404304572423428,
+    "ci_high_pp": 0.375852369774357,
+    "exact_one_sided_p": 0.06448805455622458
+  },
+  "any_earlier_experimental_report_counts": {
+    "events_stable": 2,
+    "n_stable": 1418,
+    "events_unstable": 1,
+    "n_unstable": 3783,
+    "estimate_pp": 0.10055128370238653,
+    "ci_low_pp": -0.09077769422418194,
+    "ci_high_pp": 0.291880261628955,
+    "exact_one_sided_p": 0.1824654988342791
+  }
+}

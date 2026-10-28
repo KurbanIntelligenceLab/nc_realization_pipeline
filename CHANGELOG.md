@@ -1,5 +1,52 @@
 # Changelog
 
+## 2.4.13 (27 October 2026)
+
+Documentation only: README and CITATION carry the paper's final title, "Hypothetical labels in computational materials databases are not a reliable proxy for compositional novelty". No code, data or estimate changes.
+
+## 2.4.12 (27 October 2026)
+
+The record-level audit of prior-record matches, and the paper's revised title. No prespecified result changes.
+- **`data/audit/prior_record_audit.csv`:** the 60 audited matches (stratified, seed 20261026), with the composition, year and experimental status each original paper reports, the evidence tier, and the auditor's notes.
+- **`scripts/audit_estimates.py`** (output `data_derived/checks/audit_estimates.json`): recomputes each verdict under the paper's composition rule with the pipeline's own distance, weights confirmation by stratum, and gives Jeffreys-based 95% intervals by simulation.
+  - Confirmed: 53 of 60 under the rule, 49 exactly.
+  - Matched entries confirmed: an estimated 1,880 of 2,203.
+- **README and CITATION:** the title is "More than a thousand inorganic compositions labeled hypothetical and stable already had recorded experimental structures", because the audit-adjusted count is below two thousand.
+
+## 2.4.11 (26 October 2026)
+
+Reviewer-driven corrections. No prespecified result changes.
+- **`scripts/novelty_checks.py`:** a third exploratory check, pre-existence restricted to exact composition matches (tolerance 1e-6), using the same matching code: 3.4%, 5.6% and 16.2% (98 of 2,860; 39 of 692; 1,779 of 10,966), against 3.6%, 6.2% and 18.8% under the paper's rule. The tolerance counts it recomputes reproduce the paper's exactly. The output in `data_derived/checks/novelty_checks.json` now includes it.
+- **Figure 3 and Source Data Fig. 3:** the detectable-effect line is described as an approximate normal-theory 80%-power calculation; "reliably detectable" is removed. The legend reads "Detectable at 80% power, approx."; all ten figure presentation checks pass, including the one that rejects text past the panel edge.
+- **README:** states the power calculation as approximate, with the interval extending to 0.38; states the exploratory 0.63% bound as a bound on the stable-side recording probability, not on the effect; and adds the exact-composition rates.
+
+## 2.4.10 (26 October 2026)
+
+Wording only. The audit and README now describe post-release cases as the "earliest located report" rather than a "first report", because a literature search cannot establish that no earlier report exists. The unverified description of the Li2AgGe paper as a single-crystal determination is removed. No classification or result changes.
+
+## 2.4.9 (26 October 2026)
+
+Audit entries resolved. No database-defined result changes, and the threshold sensitivity analysis is unchanged.
+- **MgSc2Ru:** confirmed as a first report after release. It is the 2015 crystal-structure report of Sc2RuMg (Kersting, Rodewald and Poettgen, Z. Kristallogr. 230, 151-155, 2015), tetragonal rather than the predicted Heusler structure.
+- **InCl3:** already known under the outcome definition, from a 1954 powder-diffraction structure assignment (Templeton and Carter, J. Phys. Chem. 58, 940-944, 1954), which replaces the secondary citation.
+- **README:** the ten-year realizations are now stated under both definitions.
+
+## 2.4.8 (26 October 2026)
+
+The literature audit of individual outcomes, kept separate from the database-defined results, which are unchanged.
+- **`data/audit/literature_audit.csv`:** the four OQMD v1.0 compositions recorded within ten years and the four events of the primary threshold window, with what each source establishes and the classification under the outcome definition and under a broader one that counts any earlier experimental report.
+- **Source Data:** `ncr/source_data.py` marks the audited rows of Source Data Fig. 1 and adds a Literature_audit sheet to Figs 1 and 3, plus a note to Fig. 2. Counts and formulas are unchanged. The audit is read from `data/audit/` beside the run's workdir, so synthetic worlds and the frozen study configuration are unaffected.
+- **`scripts/literature_sensitivity.py`** (output `data_derived/checks/literature_sensitivity.json`): reruns the blocked estimator and the exact test with the events recoded under the broader definition. It refuses to run if any threshold event lacks an audit entry.
+- **Tests:** `tests/test_literature_audit.py`.
+
+## 2.4.7 (26 October 2026)
+
+Documentation only. The README reports the literature check of the four ten-year OQMD v1.0 realizations: two (EuNbO3, InCl3) had been reported before the release in sources outside the open record. The threshold summary now describes the comparison as too imprecise to determine whether the label changed later structure reporting.
+
+## 2.4.6 (26 October 2026)
+
+Documentation only. The README states the bounds as the paper does: prior-record counts are lower bounds, while realization counts can err in either direction. It also describes the space-group check as a diagnostic, not a structural match.
+
 ## 2.4.5 (26 October 2026)
 
 Two exploratory checks and the paper's final title; no estimate changes.

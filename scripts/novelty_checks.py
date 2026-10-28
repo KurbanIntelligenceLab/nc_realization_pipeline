@@ -8,6 +8,12 @@ They were added after the outcomes were measured and are reported as exploratory
    predicted structure. COD is the only source that gives space groups; the ICSD-derived records
    do not, so predictions known only from them are not assessed.
 
+3. Exact composition. A prediction counts as already known when a record dated by the release matches its
+   composition within the paper's tolerance (normalized compositions within 0.02). This check asks whether
+   a record dated by the release matches the composition exactly (tolerance 1e-6), with the same matching
+   code, for every already-known prediction; any exact match is also a tolerance match, so no other
+   prediction can qualify.
+
 2. Timing of the Materials Project cohort. The 2022 build is the first archived build, so it does
    not date when each prediction was first published. A record dated before 2011, before the
    project started in October 2011 (Jain et al., APL Materials 1, 011002, 2013), cannot be a
@@ -55,6 +61,48 @@ def _read_records(path):
     return exps, sg
 
 
+_EL = __import__("re").compile(r"[A-Z][a-z]?")
+
+
+def _elements(formula):
+    return frozenset(_EL.findall(formula))
+
+
+def exact_composition_check(derived, records_path, exps=None):
+    """Already-known predictions with an exact-composition record dated by the release, per release."""
+    import datetime as _dt
+    exps = exps if exps is not None else _read_records(records_path)[0]
+    out = {}
+    for stem in ("oqmd", "materials_project"):
+        cohort = list(csv.DictReader(open(os.path.join(derived, "cohorts", f"{stem}.csv"))))
+        dbm = {r["pred_id"]: r for r in csv.DictReader(open(os.path.join(derived, "dbmatch", f"{stem}.csv")))}
+        known = []
+        for r in cohort:
+            e, _ = parse_date(r["entry_date"])
+            f = dbm[r["pred_id"]]["db_first_T3"]
+            if f and parse_date(f)[0] <= e:
+                known.append((r, e))
+        need = {_elements(r["formula"]) for r, _ in known}
+        cand = defaultdict(list)
+        for x in exps:
+            k = _elements(x["formula"])
+            if k in need:
+                cand[k].append(x)
+        by_rel = defaultdict(lambda: [0, 0, 0])
+        for r in cohort:
+            by_rel[r["entry_release"]][0] += 1
+        for r, e in known:
+            by_rel[r["entry_release"]][1] += 1
+            for x in cand.get(_elements(r["formula"]), []):
+                if x["date"] and x["date"] <= e and matching.match_tier(r["formula"], "", x, {"comp_delta": 1e-6}) is not None:
+                    by_rel[r["entry_release"]][2] += 1
+                    break
+        for rel, (n, k_tol, k_exact) in sorted(by_rel.items()):
+            out[rel] = {"predictions": n, "already_known_within_tolerance": k_tol, "already_known_exact": k_exact,
+                        "share_within_tolerance": k_tol / n, "share_exact": k_exact / n}
+    return out
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--derived", default="data_derived")
@@ -96,6 +144,7 @@ def main(argv=None):
             if stem == "materials_project":
                 out["timing"][rel] = {"already_known": known, "earliest_record_before_2011": pre2011,
                                       "share": pre2011 / known if known else None}
+    out["exact_composition"] = exact_composition_check(a.derived, a.records, exps)
     os.makedirs(os.path.join(a.derived, "checks"), exist_ok=True)
     with open(os.path.join(a.derived, "checks", "novelty_checks.json"), "w") as fh:
         json.dump(out, fh, indent=2)
@@ -103,6 +152,10 @@ def main(argv=None):
         print(f"{rel}: {v['COD_record_in_predicted_space_group']} of {v['with_COD_record_by_release']} already-known "
               f"predictions with a COD record by release had one in the predicted space group "
               f"({100 * v['share']:.1f}%)" if v["share"] is not None else f"{rel}: none")
+    for rel, v in out["exact_composition"].items():
+        print(f"{rel}: already known within tolerance {v['already_known_within_tolerance']} of {v['predictions']} "
+              f"({100 * v['share_within_tolerance']:.1f}%); exact composition {v['already_known_exact']} "
+              f"({100 * v['share_exact']:.1f}%)")
     for rel, v in out["timing"].items():
         print(f"{rel}: {v['earliest_record_before_2011']} of {v['already_known']} already-known compositions "
               f"have an earliest record dated before 2011 ({100 * v['share']:.1f}%)")

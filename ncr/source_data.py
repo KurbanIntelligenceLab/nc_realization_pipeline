@@ -41,6 +41,28 @@ def _readme(wb, title, lines):
     ws.column_dimensions["A"].width = 120
 
 
+def read_audit(path: str) -> list:
+    """The literature audit of individual outcomes (Supplementary Note 6), if released; else empty."""
+    import csv
+    if not path or not os.path.exists(path):
+        return []
+    with open(path, newline="") as fh:
+        return list(csv.DictReader(fh))
+
+
+def _audit_sheet(wb, audit, keep):
+    rows = [[a["composition"], a["release"], a["in_cohort_10yr"], a["threshold_side"], a["record_id"],
+             a["record_source"], a["record_date"], a["finding"], a["what_the_source_establishes"],
+             a["classification_under_outcome_definition"],
+             a["classification_if_any_earlier_experimental_report_counts"], a["evidence"]]
+            for a in audit if keep(a)]
+    _sheet(wb, "Literature_audit", ["Composition", "Release", "Among ten-year cohort realizations",
+                                    "Threshold side (+/-25 meV/atom, five years)", "Earliest matching record",
+                                    "Record source", "Record date", "Literature finding",
+                                    "What the source establishes", "Classification under the outcome definition",
+                                    "Classification if any earlier experimental report counts", "Evidence"], rows)
+
+
 def _wilson(k, n, z):
     """Wilson score bounds as Excel formulas for counts in cells k and n, with critical value z."""
     core = f"({k}/{n}+{z}^2/(2*{n}))/(1+{z}^2/{n})"
@@ -48,31 +70,46 @@ def _wilson(k, n, z):
     return f"=MAX(0,{core}-{half})", f"=MIN(1,{core}+{half})"
 
 
-def fig1(fd, path):
+def fig1(fd, path, audit=()):
     led = fd["fig1"]["ledger"]
+    from .util import decimal_year, parse_date
+    marks = [(a["release"], decimal_year(parse_date(a["record_date"])[0]), f'{a["composition"]}: {a["finding"]}')
+             for a in audit if a.get("in_cohort_10yr") == "yes"]
+
+    def mark(release, year):
+        # offsets in the ledger are rounded to 1e-4 yr; records of one release are months apart
+        hits = [m for rel, y, m in marks if rel == release and abs(y - year) < 1e-3]
+        return hits[0] if len(hits) == 1 else ""
     order = sorted(led, key=lambda k: led[k]["date"])
     wb = Workbook()
     _readme(wb, "Source Data for Fig. 1", [
         "Sheet Fig1_records: every plotted point, one row per prediction already known at release or "
         "first recorded within its longest horizon of complete follow-up.",
-        "  Earliest record is the decimal year of the earliest matching experimental structure record "
+        "  Earliest record is the decimal year of the earliest matching experimental structure record in the "
+        "analyzed sources "
         "(year-only dates placed on 1 July); Years from release is a formula.",
         "Sheet Fig1_outcomes: the numbers printed in the figure. Counts are formulas over Fig1_records; "
         "median ages are computed by the released code (ncr/analysis.py, _ledger). Not recorded within "
         "follow-up includes predictions first recorded only after their complete follow-up, which no "
         "analysis counts.",
-    ])
+        "All dates are those of the earliest matching record in the analyzed sources (COD and the ICSD-derived "
+        "records). Column Literature audit marks the four OQMD v1.0 compositions recorded within ten years, which "
+        "were checked individually against the literature after the outcomes were measured; sheet "
+        "Literature_audit gives what each source establishes. The counts remain those of the database matching.",
+    ][: None if audit else -1])
     rows, r = [], 2
     for k in order:
         v = led[k]
         for y in sorted(v["known_years"]):
-            rows.append([k, v["date"], "Already known", y, f"=D{r}-B{r}"])
+            rows.append([k, v["date"], "Already known", y, f"=D{r}-B{r}", ""])
             r += 1
         for off in sorted(v["later_offsets"]):
-            rows.append([k, v["date"], "Recorded later", v["date"] + off, f"=D{r}-B{r}"])
+            rows.append([k, v["date"], "Recorded later", v["date"] + off, f"=D{r}-B{r}",
+                         mark(k, v["date"] + off)])
             r += 1
     _sheet(wb, "Fig1_records", ["Release", "Release date (decimal year)", "Outcome",
-                                "Earliest record (decimal year)", "Years from release"], rows)
+                                "Earliest record (decimal year)", "Years from release",
+                                "Literature audit (Supplementary Note 6)"], rows)
     out = []
     for i, k in enumerate(order, start=2):
         v = led[k]
@@ -82,10 +119,12 @@ def fig1(fd, path):
     _sheet(wb, "Fig1_outcomes", ["Release", "Predictions", "Already known", "Recorded within follow-up", "Not recorded within follow-up",
                                  "Median age of already-known records (years)",
                                  "Longest horizon of complete follow-up (years)"], out)
+    if audit:
+        _audit_sheet(wb, audit, lambda a: a.get("in_cohort_10yr") == "yes")
     wb.save(path)
 
 
-def fig2(fd, path):
+def fig2(fd, path, audit=()):
     wb = Workbook()
     _readme(wb, "Source Data for Fig. 2", [
         "Fig2a_coverage: capture-recapture coverage for records dated before 2017. Estimate = records in "
@@ -96,7 +135,11 @@ def fig2(fd, path):
         "interval (formulas).",
         "Fig2c_recorded_later: share recorded within each complete horizon, with Wilson intervals simultaneous "
         "across the horizons of each release (Bonferroni; formulas).",
-    ])
+    ] + ([
+        "Counts are database-matched: dates are those of the earliest matching record in the analyzed sources. "
+        "A literature audit found earlier experimental reports for two of the four OQMD v1.0 compositions "
+        "recorded within ten years (Supplementary Note 6; marked in Source Data Fig. 1).",
+    ] if audit else []))
     rows, r = [], 2
     for c in (fd.get("fig2") or {}).get("coverage", []):
         for part, lab in (("COD", "COD"), ("ICSD-derived", "ICSD-derived"), ("either", "Either")):
@@ -131,7 +174,7 @@ def fig2(fd, path):
     wb.save(path)
 
 
-def fig3(fd, path):
+def fig3(fd, path, audit=()):
     d = fd["fig3"]
     wb = Workbook()
     _readme(wb, "Source Data for Fig. 3", [
@@ -142,8 +185,13 @@ def fig3(fd, path):
         "decomposition energy relative to the threshold.",
         "Fig3d_label_effect: blocked differences and their normal-approximation 95% intervals, computed by the "
         "released code (ncr/analysis.py); unreliable with this few events. The last row is the smallest effect "
-        "the primary analysis could detect with 80% power.",
-    ])
+        "detectable with 80% power in an approximate normal-theory calculation; it describes the design, not the "
+        "effects the data exclude.",
+    ] + ([
+        "Events are database-matched. Sheet Literature_audit gives the literature check of the four threshold "
+        "events (three labeled stable, one unstable) and what each source establishes; a sensitivity analysis "
+        "that counts any earlier experimental report is computed by scripts/literature_sensitivity.py.",
+    ] if audit else []))
     rows = []
     i = 2
     for p in d["premise"]:
@@ -169,10 +217,12 @@ def fig3(fd, path):
     rows = [[r_["label"], lab.get(r_["group"], r_["group"]), pp(r_.get("est")), pp(r_.get("lo")), pp(r_.get("hi"))]
             for r_ in d["forest"] if r_["group"] in lab]
     if d.get("mde") is not None:
-        rows.append(["Smallest reliably detectable effect (80% power), primary analysis", "reference",
+        rows.append(["Smallest effect detectable with 80% power (approximate, normal theory), primary analysis", "reference",
                      pp(d["mde"]), None, None])
     _sheet(wb, "Fig3d_label_effect", ["Analysis", "Group", "Effect (percentage points)", "95% lower",
                                       "95% upper"], rows)
+    if audit:
+        _audit_sheet(wb, audit, lambda a: a.get("threshold_side") in ("stable", "unstable"))
     wb.save(path)
 
 
@@ -211,13 +261,13 @@ def figS2(fd, path):
     wb.save(path)
 
 
-def write_all(fd: dict, outdir: str) -> list:
+def write_all(fd: dict, outdir: str, audit=()) -> list:
     os.makedirs(outdir, exist_ok=True)
     out = []
     for name, fn in (("Source_Data_Fig1.xlsx", fig1), ("Source_Data_Fig2.xlsx", fig2),
                      ("Source_Data_Fig3.xlsx", fig3), ("Source_Data_Supplementary_Fig1.xlsx", figS1),
                      ("Source_Data_Supplementary_Fig2.xlsx", figS2)):
         p = os.path.join(outdir, name)
-        fn(fd, p)
+        fn(fd, p, audit) if fn in (fig1, fig2, fig3) else fn(fd, p)
         out.append(p)
     return out

@@ -471,6 +471,10 @@ def step_figures(cfg: dict) -> dict:
     checks = FIG.render_all(figs, os.path.join(wd, "figures"))
     write_json(os.path.join(wd, "results", "figure_checks.json"), checks)
     from . import source_data
-    sd = source_data.write_all(figs, os.path.join(wd, "figures", "source_data"))
+    # The literature audit belongs to the study's own data (beside its workdir), so a synthetic
+    # world or any other run without the file gets none; the study configuration is unchanged.
+    audit = source_data.read_audit(os.path.join(os.path.dirname(os.path.abspath(wd)),
+                                                "data", "audit", "literature_audit.csv"))
+    sd = source_data.write_all(figs, os.path.join(wd, "figures", "source_data"), audit)
     log(f"figures: wrote {os.path.join(wd, 'figures')} and {len(sd)} Source Data workbooks; checks {checks}")
     return checks
