@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.4.14 (29 October 2026)
+
+Figure revisions for submission. No data, estimate or Source Data value changes. Every plotted value was verified identical to 2.4.13, and all ten presentation checks pass.
+- **Fig. 1:** the outcome text becomes an aligned table with each release's shares. The after-release axis is labeled "(expanded scale)". Records for which the literature audit found an earlier experimental report are drawn as open circles: `render_all` and `fig1` take the audit, which the figure step reads beside the workdir, as for the Source Data. The before-release points are slightly smaller and lighter.
+- **Fig. 2:** all three panels share one row per release. Panel c shows horizons as offset points, with a horizon and count column. Release labels carry the cohort size once. Panel a gives the combined "Either source" coverage the dominant mark.
+- **Fig. 3:**
+  - Panel b draws the pooled window disagreement, derived exactly from the bins with a Wilson interval, and limits the criterion line to the window it applies to.
+  - Panel d groups the windows and the placebo thresholds under headings that state the unit once, marks "(no events)", and draws the detectable-effect lines on the primary row only.
+- **Supplementary Fig. 1:** follow-up is drawn as in Fig. 1, horizons are labeled, release labels match Figs 1 and 2, and a bracket marks the period in which the record rests on COD alone.
+- **Supplementary Fig. 2:**
+  - The primary window comes first, as in Fig. 3d.
+  - The axis is tightened to the data while keeping the full limit band; its lower limit uses signed values.
+  - Each panel states the largest remaining difference; the legend marks the first-specified scheme and says "Prespecified".
+- **Tests:** `tests/test_figure_audit_marks.py`.
+
 ## 2.4.13 (27 October 2026)
 
 Documentation only: README and CITATION carry the paper's final title, "Hypothetical labels in computational materials databases are not a reliable proxy for compositional novelty". No code, data or estimate changes.

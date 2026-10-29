@@ -45,6 +45,15 @@ plt.rcParams.update({
     "pdf.fonttype": 42, "ps.fonttype": 42, "savefig.dpi": 600})
 
 
+def _wilson(k, n, z=1.959963984540054):
+    """Wilson 95% interval for k of n, as used throughout the paper."""
+    p = k / n
+    den = 1 + z * z / n
+    c = (p + z * z / (2 * n)) / den
+    h = z * np.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / den
+    return c - h, c + h
+
+
 def _letter(fig, x, y, s):
     fig.text(x, y, s, fontsize=8, fontweight="bold", ha="left", va="top")
 
@@ -149,74 +158,87 @@ def _swarm(values, half_height, rng, min_dx):
     return offs
 
 
-def fig1(res, path):
+def fig1(res, path, audit=()):
     """Fig. 1. Every prediction of the three releases with a matching experimental structure
     record, placed at the date of its earliest record relative to the release: before it
     (already known; decades scale) or after it, within the longest horizon of complete
-    follow-up (recorded later; years scale). Triangles mark the median age of the
-    already-known records; counts give every prediction's outcome."""
+    follow-up (recorded later; expanded years scale). Triangles mark the median age of the
+    already-known records; open circles mark records after the release for which a literature
+    audit found an earlier experimental report. The table gives every prediction's outcome."""
+    from .util import decimal_year, parse_date
     d = res["fig1"]
     led = d["ledger"]
     order = sorted(led, key=lambda k: led[k]["date"])
-    fig = plt.figure(figsize=(WIDTH_IN, 2.45))
-    bottom, height = 0.2, 0.62
-    axl = fig.add_axes([0.145, bottom, 0.45, height])                  # before release, decades
-    axr = fig.add_axes([0.607, bottom, 0.18, height], sharey=axl)     # after release, years
+    earlier = [(a["release"], decimal_year(parse_date(a["record_date"])[0])) for a in audit
+               if a.get("in_cohort_10yr") == "yes" and a.get("finding", "").startswith("earlier")]
+    fig = plt.figure(figsize=(WIDTH_IN, 2.6))
+    bottom, height = 0.17, 0.6
+    axl = fig.add_axes([0.135, bottom, 0.43, height])                  # before release, decades
+    axr = fig.add_axes([0.577, bottom, 0.17, height], sharey=axl)     # after release, years
     rng = np.random.default_rng(11)
     ys = np.arange(len(order))[::-1].astype(float)
     band = 0.34
+    ylim = (-0.6, len(order) - 0.4)
     fig._ledger_counts = {}
-    age_max = 100.0
+    rows = []
     for yv, k in zip(ys, order):
         v = led[k]
         e = v["date"]
         ages = e - np.array(v["known_years"])
-        axl.scatter(-ages, yv + rng.uniform(-band, band, len(ages)), s=2.4, color=KNOWN,
-                    alpha=0.55, lw=0, zorder=2)
+        axl.scatter(-ages, yv + rng.uniform(-band, band, len(ages)), s=2.0, color=KNOWN,
+                    alpha=0.5, lw=0, zorder=2)
         if v.get("age_median") is not None:
             axl.plot([-v["age_median"]], [yv + band + 0.1], "v", ms=4.2, color=INK, mew=0, zorder=4, clip_on=False)
         later = np.array(v["later_offsets"])
         axr.axvspan(0, v["t_max"], ymin=(yv + 0.5 - 0.44) / len(order), ymax=(yv + 0.5 + 0.44) / len(order),
                     color=BAND, lw=0, zorder=0)
         if len(later):
-            axr.scatter(later, yv + _swarm(later, 0.40, rng, 0.25), s=10, color=LATER, lw=0, zorder=4)
+            off = _swarm(later, 0.40, rng, 0.25)
+            hit = np.array([any(rel == k and abs((e + x) - yr) < 1e-3 for rel, yr in earlier) for x in later])
+            axr.scatter(later[~hit], yv + off[~hit], s=10, color=LATER, lw=0, zorder=4)
+            if hit.any():
+                axr.scatter(later[hit], yv + off[hit], s=10, facecolor="white", edgecolor=LATER, lw=0.6, zorder=4)
         n_none = v["n"] - len(ages) - len(later)
         fig._ledger_counts[k] = (len(ages), len(later))
-        frac = (yv + 0.5) / len(order)
-        t = f"{v['t_max']:g}"
-        lines = [(f"{len(ages):,}", " already known"), (f"{len(later):,}", f" recorded within {t} yr"),
-                 (f"{n_none:,}", f" not recorded within {t} yr")]
-        for m, (num, lab) in enumerate(lines):
-            yy = frac + (0.105 - m * 0.105) * 3 / len(order)
-            axr.text(1.24, yy, num, transform=axr.transAxes, fontsize=6, ha="right", va="center",
-                     fontweight="bold" if m == 1 else "normal")
-            axr.text(1.24, yy, lab, transform=axr.transAxes, fontsize=6, ha="left", va="center")
+        rows.append((yv, len(ages), len(later), n_none, v["n"]))
     axr.axvline(0, color=INK, lw=0.9, zorder=3)                        # the release, once
-    axl.set_xlim(-max(age_max, max(float(np.max(led[k]["date"] - np.array(led[k]["known_years"]))) for k in order
-                                         if led[k]["known_years"]) + 3), 0)
+    axl.set_xlim(-max(100.0, max(float(np.max(led[k]["date"] - np.array(led[k]["known_years"]))) for k in order
+                                 if led[k]["known_years"]) + 3), 0)
     axl.set_xticks([-100, -75, -50, -25, 0], ["100", "75", "50", "25", "0"])
     axl.set_xlabel("Years before release")
     axr.set_xlim(0, 10.6)
     axr.set_xticks([0, 2, 4, 6, 8, 10])
-    axr.set_xlabel("Years after release")
+    axr.set_xlabel("Years after release\n(expanded scale)")
     axr.spines["left"].set_visible(False)
     axr.tick_params(axis="y", left=False, labelleft=False)
     axl.set_yticks(ys, [f"{_short(k)} ({k.split('(')[-1].rstrip(')')})\n{led[k]['n']:,} predictions" for k in order])
     _clean(axl, left=False)
-    axl.set_ylim(-0.6, len(order) - 0.4)
+    axl.set_ylim(*ylim)
     # axis break marks between the two time scales
     for ax, x0 in ((axl, 1.0), (axr, 0.0)):
         kw = {"transform": ax.transAxes, "color": INK, "lw": 0.6, "clip_on": False}
         ax.plot([x0 - 0.006, x0 + 0.006], [-0.025, 0.025], **kw)
+    # outcome table: one row per release, aligned with its strip; shares of the release's predictions
+    cols = ((0.858, "Already\nknown"), (0.93, "Recorded\nlater"), (0.992, "Not\nrecorded"))
+    yfig = lambda yv: bottom + height * (yv - ylim[0]) / (ylim[1] - ylim[0])
+    for x, head in cols:
+        fig.text(x, bottom + height + 0.012, head, fontsize=6, ha="right", va="bottom", linespacing=1.15)
+    for yv, nk, nl, nn, n in rows:
+        cells = (f"{nk:,} ({100 * nk / n:.1f}%)", f"{nl:,} ({100 * nl / n:.2f}%)" if nl else "0 (0%)", f"{nn:,}")
+        for (x, _), txt in zip(cols, cells):
+            fig.text(x, yfig(yv), txt, fontsize=6, ha="right", va="center")
     from matplotlib.lines import Line2D
     from matplotlib.patches import Patch
     handles = [Line2D([], [], ls="none", marker="o", ms=2.8, color=KNOWN, label="Earliest record before release (already known)"),
-               Line2D([], [], ls="none", marker="v", ms=4.2, color=INK, label="Median age of these records"),
                Line2D([], [], ls="none", marker="o", ms=3.2, color=LATER, label="First record after release (recorded later)"),
+               Line2D([], [], ls="none", marker="v", ms=4.2, color=INK, label="Median age of already-known records"),
                Patch(color=BAND, label="Complete follow-up")]
-    axl.legend(handles=handles, loc="lower left", bbox_to_anchor=(0.0, 1.06), ncol=2, columnspacing=1.2,
+    if earlier:
+        handles.insert(2, Line2D([], [], ls="none", marker="o", ms=3.2, markerfacecolor="white", markeredgecolor=LATER,
+                                 markeredgewidth=0.6, label="Earlier report found by literature audit"))
+    axl.legend(handles=handles, loc="lower left", bbox_to_anchor=(0.0, 1.07), ncol=2, columnspacing=1.2,
                handlelength=1.0, labelspacing=0.3)
-    fig.text(0.607, bottom + height + 0.012, "Release", fontsize=6, ha="center", va="bottom")
+    fig.text(0.577, bottom + height + 0.012, "Release", fontsize=6, ha="center", va="bottom")
     fig.savefig(path)
     return fig
 
@@ -225,38 +247,44 @@ def fig1(res, path):
 def fig2(res, path):
     """Fig. 2. a, how complete the experimental record is (capture-recapture coverage, records
     dated before 2017); b, predictions already known at release, by the sources that record
-    them; c, predictions recorded later at every complete horizon."""
+    them; c, predictions recorded later at every complete horizon. Every panel uses the same
+    release rows, so each release reads across from coverage to the two base rates."""
     a, c = res["fig2a"], res.get("fig2c", [])
     cov = res["fig2"]["coverage"]
     rz = res["fig2"]["realized_by_horizon"]
     order = [r["source"] for r in a][::-1]                          # release order, top to bottom
-    fig = plt.figure(figsize=(WIDTH_IN, 2.35))
-    bottom, height = 0.2, 0.64
-    axa = fig.add_axes([0.14, bottom, 0.19, height])
-    axb = fig.add_axes([0.385, bottom, 0.2, height])
-    axc = fig.add_axes([0.77, bottom, 0.19, height])
+    fig = plt.figure(figsize=(WIDTH_IN, 2.75))
+    bottom, height = 0.18, 0.64
+    axa = fig.add_axes([0.15, bottom, 0.2, height])
+    axb = fig.add_axes([0.41, bottom, 0.2, height], sharey=axa)
+    axc = fig.add_axes([0.67, bottom, 0.21, height], sharey=axa)
     y = np.arange(len(order))[::-1].astype(float)
+    ylim = (-0.6, len(order) - 0.4)
     # a: coverage of the record
-    styles = {"COD": ("s", SRC_SHADES["COD only"], None), "ICSD-derived": ("s", "#A6A6A6", None),
-              "either": ("D", INK, "white")}
-    offs = {"COD": 0.2, "ICSD-derived": 0.0, "either": -0.2}
+    # The combined estimate is the result the text cites, so it is the dominant mark (filled, first);
+    # the per-source estimates support it (open, in the source shades used in panel b).
+    styles = {"either": ("D", INK, None, 3.6, 1.0), "COD": ("s", SRC_SHADES["COD only"], "white", 3.2, 0.75),
+              "ICSD-derived": ("s", "#A6A6A6", "white", 3.2, 0.75)}
+    offs = {"either": 0.2, "COD": 0.0, "ICSD-derived": -0.2}
     for yy, src in zip(y, order):
         row = next((r for r in cov if r["source"] == src), None)
         if row is None:
             continue
-        for part, (mk, col, face) in styles.items():
+        for part, (mk, col, face, ms, alpha) in styles.items():
             d = row[part]
             _check_interval(d, f"fig2a {src} {part}")
-            _errbar(axa, 100 * d["est"], yy + offs[part], 100 * d["lo"], 100 * d["hi"], horizontal=True, color=col)
-            axa.plot([100 * d["est"]], [yy + offs[part]], mk, ms=3.6 if mk != "D" else 3.4, color=col, mew=0.8,
+            _errbar(axa, 100 * d["est"], yy + offs[part], 100 * d["lo"], 100 * d["hi"], horizontal=True, color=col,
+                    alpha=alpha)
+            axa.plot([100 * d["est"]], [yy + offs[part]], mk, ms=ms, color=col, mew=0.8,
                      mfc=col if face is None else face, mec=col, zorder=4,
-                     label={"COD": "COD", "ICSD-derived": "ICSD-derived", "either": "Either"}[part] if yy == y[0] else None)
-    axa.set_yticks(y, order)
+                     label={"COD": "COD", "ICSD-derived": "ICSD-derived", "either": "Either source"}[part] if yy == y[0] else None)
+    sizes = {r["source"]: r["already_known"]["n"] for r in a}
+    axa.set_yticks(y, [f"{src}\n{sizes[src]:,} predictions" for src in order])
     _clean(axa, left=False)
-    axa.set_ylim(-0.6, len(order) - 0.4)
+    axa.set_ylim(*ylim)
     axa.set_xlim(0, 100)
     axa.set_xticks([0, 25, 50, 75, 100])
-    axa.set_xlabel("Record coverage (%)")
+    axa.set_xlabel("Estimated record coverage (%)")
     axa.legend(loc="lower left", bbox_to_anchor=(-0.04, 1.0), ncol=3, columnspacing=0.8, handletextpad=0.2)
     # b: already known at release, by source
     his = []
@@ -274,51 +302,42 @@ def fig2(res, path):
             left += w
         _errbar(axb, 100 * dd["est"], yy, 100 * dd["lo"], 100 * dd["hi"], horizontal=True)
         axb.text(100 * dd["hi"] + 0.6, yy, f"{100 * dd['est']:.1f}%", fontsize=6, va="center", ha="left")
-    axb.set_yticks(y, [""] * len(order))
+    axb.tick_params(axis="y", left=False, labelleft=False)
     _clean(axb, left=False)
-    axb.set_ylim(-0.6, len(order) - 0.4)
     axb.set_xlim(0, 100 * max(0.25, 1.2 * max(his)))
     axb.set_xlabel("Already known at release (%)")
     axb.legend(loc="lower left", bbox_to_anchor=(-0.04, 1.0), ncol=3, columnspacing=0.7, handlelength=0.8,
                handletextpad=0.3)
-    # c: recorded later at every complete horizon
-    rows = []
-    for src in order:
-        rows += sorted([r for r in rz if r["source"] == src], key=lambda r: r["t"])
-    yc, yv, prev = [], 0.0, None
-    for r in rows:
-        if prev is not None and r["source"] != prev:
-            yv -= 0.5
-        yc.append(yv)
-        yv -= 1.0
-        prev = r["source"]
+    # c: recorded later, every complete horizon as an offset point within its release's row
     fig._points = []
     his = []
-    for r, yv in zip(rows, yc):
-        _check_interval(r, f"fig2c {r['source']} {r['t']}")
-        his.append(r["hi"])
-        _errbar(axc, 100 * r["est"], yv, 100 * r["lo"], 100 * r["hi"], horizontal=True)
-        zero = r["k"] == 0
-        axc.plot([100 * r["est"]], [yv], "o", ms=3.6, color=LATER, mfc="white" if zero else LATER, mew=0.8,
-                 zorder=4, clip_on=False)
-        axc.text(100 * r["hi"] + 0.015, yv, f"{r['k']} of {r['n']:,}", fontsize=6, va="center", ha="left")
-        fig._points.append((r["source"], r["t"], 100 * r["est"]))
-    axc.set_yticks(yc, [f"{int(r['t'])} yr" for r in rows])
-    for src in order:
-        ys_ = [yv for r, yv in zip(rows, yc) if r["source"] == src]
-        if ys_:
-            name, yr = (src.split(" (") + [""])[:2]
-            axc.text(-0.2, sum(ys_) / len(ys_), f"{name}\n({yr}" if yr else name, transform=axc.get_yaxis_transform(),
-                     fontsize=6, ha="right", va="center")
+    yfig = lambda yv: bottom + height * (yv - ylim[0]) / (ylim[1] - ylim[0])
+    for yy, src in zip(y, order):
+        rs = sorted([r for r in rz if r["source"] == src], key=lambda r: r["t"])
+        k = len(rs)
+        offsets = 0.2 * (np.arange(k)[::-1] - (k - 1) / 2)            # same 0.2 step as panel a
+        for r, off in zip(rs, offsets):
+            _check_interval(r, f"fig2c {r['source']} {r['t']}")
+            his.append(r["hi"])
+            yv = yy + off
+            _errbar(axc, 100 * r["est"], yv, 100 * r["lo"], 100 * r["hi"], horizontal=True)
+            zero = r["k"] == 0
+            axc.plot([100 * r["est"]], [yv], "o", ms=3.4, color=LATER, mfc="white" if zero else LATER, mew=0.8,
+                     zorder=4, clip_on=False)
+            fig.text(0.9, yfig(yv), f"{int(r['t'])} yr", fontsize=6, ha="left", va="center")
+            fig.text(0.99, yfig(yv), f"{r['k']:,}", fontsize=6, ha="right", va="center")
+            fig._points.append((r["source"], r["t"], 100 * r["est"]))
+    fig.text(0.9, bottom + height + 0.012, "Horizon", fontsize=6, ha="left", va="bottom")
+    fig.text(0.99, bottom + height + 0.012, "Count", fontsize=6, ha="right", va="bottom")
+    axc.tick_params(axis="y", left=False, labelleft=False)
     _clean(axc, left=False)
-    axc.set_ylim(min(yc) - 0.6, 0.6)
-    xmax = 100 * 1.4 * max(his)
+    xmax = 100 * 1.15 * max(his)
     axc.set_xlim(0, xmax)
     _ticks(axc.xaxis, 0, xmax)
     axc.set_xlabel("Recorded later (%)")
     _letter(fig, 0.004, 0.975, "a")
-    _letter(fig, 0.345, 0.975, "b")
-    _letter(fig, 0.6, 0.975, "c")
+    _letter(fig, 0.375, 0.975, "b")
+    _letter(fig, 0.635, 0.975, "c")
     fig.savefig(path)
     return fig
 
@@ -336,7 +355,7 @@ def fig3(res, path):
     axa = fig.add_axes([0.6, 0.615, 0.385, 0.33])                      # b: premise check
     axe = fig.add_axes([0.07, 0.33, 0.4, 0.13])                        # c: events
     axn = fig.add_axes([0.07, 0.085, 0.4, 0.22], sharex=axe)           # c: entries
-    axc = fig.add_axes([0.745, 0.085, 0.24, 0.38])                     # d: label effect
+    axc = fig.add_axes([0.715, 0.085, 0.27, 0.38])                     # d: label effect
     _hull_panel(axs)
     pairs = d.get("premise", [])
     his = []
@@ -358,16 +377,31 @@ def fig3(res, path):
         axa.set_xticks(range(len(labs)), labs)
         axa.set_xlim(-0.5, len(labs) - 0.5)
         axa.tick_params(axis="x", labelsize=5.5)
-    if pairs:
-        inside = [i for i, b in enumerate(pairs[0]["bins"]) if b["bin"][1] <= w]
-        if inside:
-            axa.axvspan(min(inside) - 0.5, max(inside) + 0.5, color=BAND, lw=0, zorder=0)
-    axa.axhline(20, color=INK, lw=0.5, ls=(0, (1.5, 1.5)))
-    axa.text(len(pairs[0]["bins"]) - 0.55 if pairs else 5, 20.6, "Criterion", fontsize=6, ha="right", va="bottom")
+    inside = [i for i, b in enumerate(pairs[0]["bins"]) if b["bin"][1] <= w] if pairs else []
+    if inside:
+        x0, x1 = min(inside) - 0.5, max(inside) + 0.5
+        axa.axvspan(x0, x1, color=BAND, lw=0, zorder=0)
+        # Check (a) is judged on the window as a whole, so its pooled disagreement is drawn across the
+        # window (derived exactly from the bins: total disagreeing over total compositions, Wilson 95%),
+        # and the criterion line spans only the window it applies to.
+        for k, pr in enumerate(pairs):
+            ins = [b for b in pr["bins"] if b["bin"][1] <= w and b.get("n")]
+            K = sum(round(b["rate"] * b["n"]) for b in ins)
+            N = sum(b["n"] for b in ins)
+            lo, hi = _wilson(K, N)
+            col = styles[k % 2][1]
+            axa.fill_between([x0 + 0.06, x1 - 0.06], 100 * lo, 100 * hi, color=col, alpha=0.18, lw=0, zorder=1)
+            axa.plot([x0 + 0.06, x1 - 0.06], [100 * K / N] * 2, color=col, lw=0.9, zorder=2, solid_capstyle="butt")
+        axa.plot([x0, x1], [20, 20], color=INK, lw=0.5, ls=(0, (1.5, 1.5)), zorder=2)
+        axa.text(x1 + 0.08, 20, "Criterion", fontsize=6, ha="left", va="center")
+    from matplotlib.lines import Line2D
+    handles, labels = axa.get_legend_handles_labels()
+    handles.append(Line2D([], [], color=INK, lw=0.9))
+    labels.append("Pooled over the window")
     axa.set_ylim(0, 100 * 1.15 * max(his) if his else 50)
     axa.set_xlabel(r"Distance from the threshold (meV atom$^{-1}$)")
     axa.set_ylabel("Labels disagree (%)")
-    axa.legend(loc="upper right")
+    axa.legend(handles, labels, loc="upper right")
     # b
     cent = np.array([bn["center"] for bn in d["bins"]])
     ks = np.array([bn["k"] for bn in d["bins"]])
@@ -400,36 +434,52 @@ def fig3(res, path):
                  label=f"Unstable ({ev['events_B']} of {ev['N_B']:,} in window)")
         axe.legend(loc="lower left", bbox_to_anchor=(0.0, 1.0), ncol=2, columnspacing=0.8, handletextpad=0.2)
     # c
+    # Two groups: the windows (the primary analysis is the +/-25 window) and the placebo thresholds.
+    # The unit is stated once per group heading; the detectable effect, computed for the primary
+    # analysis only, is drawn on the primary row only.
     rows = [r for r in d.get("forest", []) if r["group"] in {"primary", "window", "placebo"}]
-    yy, yv, prev = [], 0.0, None
-    for r in rows:
-        if prev is not None and r["group"] != prev:
-            yv -= 0.45
-        yy.append(yv)
-        yv -= 0.8
-        prev = r["group"]
-    mde = d.get("mde")
-    if mde:
-        for m, xv in enumerate((-100 * mde, 100 * mde)):
-            axc.axvline(xv, color=INK, lw=0.6, ls=(0, (1.5, 1.5)), zorder=1,
-                        label=f"Detectable at 80% power, approx. (\u00b1{100 * mde:.2f})" if m else None)
-        axc.legend(loc="lower left", bbox_to_anchor=(-0.02, 1.0), handlelength=1.6)
+    U = r"meV atom$^{-1}$"
+    short = {"Primary (\u00b125 meV/atom)": "\u00b125 (primary)", "Window \u00b110 meV/atom": "\u00b110",
+             "Window \u00b150 meV/atom": "\u00b150", "Placebo threshold at \u221215 meV/atom": "\u221215",
+             "Placebo threshold at +15 meV/atom": "+15"}
+    groups = [("Window", [r for r in rows if r["group"] in ("primary", "window")]),
+              ("Placebo threshold", [r for r in rows if r["group"] == "placebo"])]
+    yy, labels, heads, yv = [], [], [], 0.0
+    for gname, grs in groups:
+        if not grs:
+            continue
+        heads.append((gname, yv))
+        yv -= 0.75
+        for r in grs:
+            lab = short.get(r["label"], r["label"])
+            if r.get("note") == "no events":
+                lab += " (no events)"
+            yy.append((r, yv))
+            labels.append(lab)
+            yv -= 0.8
+        yv -= 0.15
     axc.axvline(0, color=INK, lw=0.5)
-    for r, yv in zip(rows, yy):
+    mde = d.get("mde")
+    for r, yv in yy:
         col = INK if r["group"] == "primary" else UNSTABLE
+        if r["group"] == "primary" and mde:
+            for m, xv in enumerate((-100 * mde, 100 * mde)):
+                axc.plot([xv, xv], [yv - 0.34, yv + 0.34], color=INK, lw=0.6, ls=(0, (1.5, 1.5)), zorder=1,
+                         label=f"Detectable at 80% power, approx. (\u00b1{100 * mde:.2f}), primary" if m else None)
         if r.get("note") == "no events":
             axc.plot([0], [yv], "o", ms=3.0, mfc="white", mec=UNSTABLE, mew=0.6)
             continue
         _errbar(axc, 100 * r["est"], yv, 100 * r["lo"], 100 * r["hi"], horizontal=True, color=col)
         axc.plot([100 * r["est"]], [yv], "D" if r["group"] == "primary" else "o",
                  ms=3.6 if r["group"] == "primary" else 2.8, color=col, mew=0)
-    U = r"meV atom$^{-1}$"
-    lab = {"Primary (\u00b125 meV/atom)": f"\u00b125 {U} (primary)", "Window \u00b110 meV/atom": f"\u00b110 {U}",
-           "Window \u00b150 meV/atom": f"\u00b150 {U}", "Placebo threshold at \u221215 meV/atom": f"Placebo at \u221215 {U}",
-           "Placebo threshold at +15 meV/atom": f"Placebo at +15 {U}"}
-    axc.set_yticks(yy, [lab.get(r["label"], r["label"]) for r in rows])
+    if mde:
+        axc.legend(loc="lower left", bbox_to_anchor=(-0.24, 1.0), handlelength=1.6)
+    axc.set_yticks([yv for _, yv in yy], labels)
+    for gname, hy in heads:
+        axc.text(-0.62, hy, f"{gname} ({U})", transform=axc.get_yaxis_transform(), fontsize=6, ha="left", va="center")
     _clean(axc, left=False)
-    axc.set_ylim(min(yy) - 0.5, 0.55)
+    ys_rows = [y_ for _, y_ in yy]
+    axc.set_ylim(min(ys_rows) - 0.5, heads[0][1] + 0.45 if heads else 0.55)
     _ticks(axc.xaxis, *axc.get_xlim(), nbins=6)
     axc.set_xlabel("Label effect (percentage points)")
     for x, yv, s_ in ((0.004, 0.99, "a"), (0.5, 0.99, "b"), (0.004, 0.525, "c"), (0.565, 0.525, "d")):
@@ -440,28 +490,38 @@ def fig3(res, path):
 
 # --------------------------------------------------------------------- Supplementary Figures
 def figS1(res, path):
-    """Supplementary Fig. 1. The dated releases with their longest complete follow-up, the
-    publication years covered by each source of dated structure records, the reporting-lag
-    buffer and the data cutoff."""
+    """Supplementary Fig. 1. The dated releases with their longest complete follow-up (drawn as in
+    Fig. 1), the publication years covered by each source of dated structure records, the period
+    in which the record rests on COD alone, the reporting-lag buffer and the data cutoff."""
     from matplotlib.lines import Line2D
     from matplotlib.patches import Patch
     d = res["fig1"]
-    fig = plt.figure(figsize=(WIDTH_IN * 0.7, 2.35))
-    ax = fig.add_axes([0.33, 0.17, 0.63, 0.6])
+    fig = plt.figure(figsize=(WIDTH_IN * 0.7, 2.55))
+    ax = fig.add_axes([0.33, 0.15, 0.6, 0.6])
     rel, src = d["releases"], d["sources"]
     ys_s = np.arange(len(src))[::-1].astype(float)
-    ys_r = np.arange(len(rel))[::-1] + len(src) + 1.2
+    ys_r = 1.25 * np.arange(len(rel))[::-1] + len(src) + 1.4          # room for two-line labels
     x_lo, cut = 2010, d["cutoff"]
     ax.axvspan(cut - 1, cut, facecolor="#F2F2F2", lw=0, zorder=0, hatch="////", edgecolor="#BFBFBF")
     for r, yv in zip(rel, ys_r):
-        ax.barh(yv, r["t_max"], left=r["date"], height=0.42, color="#4D4D4D", edgecolor="none", zorder=2)
+        ax.barh(yv, r["t_max"], left=r["date"], height=0.42, color=BAND, edgecolor=INK, linewidth=0.5, zorder=2)
         ax.plot([r["date"]], [yv], "D", ms=3.4, color=INK, mew=0, zorder=4)
+        ax.text(r["date"] + r["t_max"] + 0.15, yv, f"{r['t_max']:g} yr", fontsize=6, ha="left", va="center")
     for s_, yv in zip(src, ys_s):
         x_end = min(s_["last_year"] + 1, cut)
         ax.barh(yv, x_end - x_lo, left=x_lo, height=0.42, color=GREY_L, edgecolor="none", zorder=2)
         ax.plot([x_lo - 0.18], [yv], "<", ms=4.6, color="#8C8C8C", mew=0, zorder=3, clip_on=False)
+    # the years in which only COD records structures: after the last year of every other source
+    others = [s_["last_year"] for s_ in src if s_["name"] != "COD"]
+    if others:
+        c0 = max(others) + 1
+        yb = (max(ys_s) + min(ys_r)) / 2
+        ax.plot([c0, cut], [yb, yb], color=INK, lw=0.5, zorder=3)
+        for xe in (c0, cut):
+            ax.plot([xe, xe], [yb - 0.12, yb + 0.12], color=INK, lw=0.5, zorder=3)
+        ax.text((c0 + cut) / 2, yb + 0.18, "Record rests on COD alone", fontsize=6, ha="center", va="bottom")
     ax.axvline(cut, color=INK, lw=0.6, ls=(0, (1.5, 1.5)), zorder=3)
-    ax.set_yticks(list(ys_r) + list(ys_s), [f"{_short(r['label'])} ({r['n']:,} predictions)" for r in rel]
+    ax.set_yticks(list(ys_r) + list(ys_s), [f"{_short(r['label'])} ({int(r['date'])})\n{r['n']:,} predictions" for r in rel]
                   + [s_["name"] for s_ in src])
     _clean(ax, left=False)
     ax.tick_params(axis="y", pad=8)
@@ -473,7 +533,7 @@ def figS1(res, path):
         xf, yf = fig.transFigure.inverted().transform(ax.transData.transform((x_lo, yv)))
         fig.text(0.012, yf, txt, fontsize=6, fontweight="bold", ha="left", va="bottom")
     handles = [Line2D([], [], ls="none", marker="D", ms=3.4, color=INK, label="Release"),
-               Patch(color="#4D4D4D", label="Longest complete follow-up"),
+               Patch(facecolor=BAND, edgecolor=INK, linewidth=0.5, label="Longest complete follow-up"),
                Patch(color=GREY_L, label="Dated records (continue before 2010)"),
                Patch(facecolor="#F2F2F2", edgecolor="#BFBFBF", hatch="////", label="Reporting-lag buffer (1 yr)"),
                Line2D([], [], color=INK, lw=0.6, ls=(0, (1.5, 1.5)), label="Data cutoff")]
@@ -485,17 +545,18 @@ def figS1(res, path):
 
 def figS2(res, path):
     """Supplementary Fig. 2. Standardized differences across the threshold for each blocking
-    scheme, in the 10, 25 (primary) and 50 meV/atom windows, against the pre-specified limit."""
+    scheme, in the 10, 25 (primary) and 50 meV/atom windows, against the prespecified limit. Each
+    panel states the largest difference left by the blocking scheme used."""
     from matplotlib.patches import Patch
     bal = res["fig3"].get("balance", {})
     covs = bal.get("covariates", [])
     wins = bal.get("windows") or {"25": bal.get("series", [])}
     names = {"n_elements": "Number of elements", "mean_electronegativity": "Mean electronegativity",
              "max_atomic_number": "Largest atomic number"}
-    short = {"No blocks": "No blocks", "Chemistry class": "Chemistry class",
+    short = {"No blocks": "No blocks", "Chemistry class": "Chemistry class (first specified)",
              "+ electronegativity": "+ Electronegativity", "+ number of elements (primary)": "+ Number of elements (used)"}
     styles = [("o", "#B3B3B3", "white"), ("s", "#9B9B9B", None), ("^", "#5F5F5F", None), ("o", INK, None)]
-    keys = [w for w in ("10", "25", "50") if w in wins]
+    keys = [w for w in ("25", "10", "50") if w in wins]                 # primary first, as in Fig. 3d
     fig = plt.figure(figsize=(WIDTH_IN, 2.15))
     left, right, gap = 0.17, 0.985, 0.025
     wpan = (right - left - gap * (len(keys) - 1)) / len(keys)
@@ -516,12 +577,16 @@ def figS2(res, path):
                     label=short.get(ser["label"], ser["label"]) if m == 0 else None, zorder=3)
         used = wins[w][-1]["smd"]
         fig._balance[w] = max(abs(v) for v in used.values() if v is not None)
+        ax.text(0.98, 0.03, f"Max |d|, used: {fig._balance[w]:.3f}", transform=ax.transAxes, fontsize=6,
+                ha="right", va="bottom")
         ax.set_yticks(ys, [names.get(cv, cv) for cv in covs] if m == 0 else [""] * len(covs))
         _clean(ax, left=False)
         if m:
             ax.tick_params(axis="y", length=0)
-        ax.set_xlim(-lim, lim)
-        ax.set_xticks([-0.4, -0.2, 0, 0.2, 0.4])
+        neg = min([0.0] + [v for ww in keys for ser in wins[ww] for v in ser["smd"].values() if v is not None])
+        lo = min(-0.2, 1.12 * neg)                                        # every signed value, and the full limit band
+        ax.set_xlim(lo, lim)
+        ax.set_xticks([t for t in (-0.4, -0.2, 0, 0.2, 0.4) if lo <= t <= lim])
         ax.xaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"{v:g}".replace("-", "\u2212")))
         ax.set_ylim(-0.6, len(covs) - 0.4)
         ax.set_title(f"\u00b1{w} meV atom$^{{-1}}$" + (" (primary)" if w == "25" else ""), fontsize=6.5, pad=3)
@@ -529,7 +594,7 @@ def figS2(res, path):
             ax.set_xlabel("Standardized difference (stable minus unstable side)")
         if m == 0:
             hs, ls_ = ax.get_legend_handles_labels()
-            ax.legend(hs + [Patch(color=BAND)], ls_ + ["Pre-specified limit (|d| < 0.1)"], loc="lower left",
+            ax.legend(hs + [Patch(color=BAND)], ls_ + ["Prespecified limit (|d| < 0.1)"], loc="lower left",
                       bbox_to_anchor=(-0.02, 1.13), ncol=5, columnspacing=0.9, handletextpad=0.15)
     fig.savefig(path)
     return fig
@@ -617,10 +682,10 @@ def _balance_matches(fig, res):
     return bool(want) and set(got) == set(want) and all(abs(got[w] - want[w]) < 1e-12 for w in want)
 
 
-def render_all(res: dict, outdir: str) -> dict:
+def render_all(res: dict, outdir: str, audit=()) -> dict:
     """Draw every figure into outdir and return the presentation checks."""
     os.makedirs(outdir, exist_ok=True)
-    figs = {"fig1": fig1(res, os.path.join(outdir, "fig1.pdf")),
+    figs = {"fig1": fig1(res, os.path.join(outdir, "fig1.pdf"), audit),
             "fig2": fig2(res, os.path.join(outdir, "fig2.pdf")),
             "fig3": fig3(res, os.path.join(outdir, "fig3.pdf")),
             "figS1": figS1(res, os.path.join(outdir, "figS1.pdf")),
