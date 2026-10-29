@@ -1,0 +1,41 @@
+{
+  "events": [
+    {
+      "files": {
+        "oqmd_v1_0": {
+          "path": "../data/snapshots/oqmd_v1_0.csv.gz",
+          "sha256": "1ca81fc3216fcaaa2f9cb7c19fa462db08f466257e42dace6f1a1bb0fa99e83b",
+          "rows": 279210,
+          "hypothetical": 249495
+        },
+        "oqmd_v1_1": {
+          "path": "../data/snapshots/oqmd_v1_1.csv.gz",
+          "sha256": "7a9bea5fb2433b3079b2a53c60076158a50bd3684c6123e80af57bf7f8816b21",
+          "rows": 310219,
+          "hypothetical": 277481
+        },
+        "mp_2022_10_28": {
+          "path": "../data/snapshots/mp_2022_10_28.csv.gz",
+          "sha256": "185bead0bb0e5bc232f635e05bbe6979f20859dfe476f0823369e42708af1e17",
+          "rows": 154807,
+          "hypothetical": 104723
+        },
+        "experiments": {
+          "path": "../data/experiments/experimental_records.csv.gz",
+          "sha256": "b77c7dc6562d4c25d1177569d19d1c969e81913576a85a290d5217fe9cd95b9c",
+          "rows": 624213
+        }
+      },
+      "versions": {
+        "python": "3.11.17",
+        "numpy": "2.4.4",
+        "pymatgen": "2026.10.24",
+        "matplotlib": "3.10.8",
+        "pymysql": "1.2.3"
+      },
+      "pipeline": "2.4.14",
+      "kind": "inputs",
+      "time": "2026-10-29T16:27:38"
+    }
+  ]
+}

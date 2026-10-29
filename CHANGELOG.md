@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.4.16 (29 October 2026)
+
+**Fix: the stored figures and Source Data in `data_derived/figures/` were out of date.** They dated from before the figure revisions of 2.4.14 and the Source Data audit marking, although the code that draws them was current. They are replaced by the output of an independent rerun of the full analysis on the authors' machine (`v2.4.15`, commit 93b9c52b; macOS, Python 3.11.17).
+
+That rerun reproduced every one of the 6,238 values in `data_derived/results/` and `data_derived/checks/`, and every match table byte for byte. The cohort tables also agree, except for a last-digit rounding difference (10⁻⁶ eV per atom) in four recomputed decomposition energies, which no estimate uses.
+
+**New test.** `tests/test_released_figures_current.py` regenerates the Source Data from the released figure data and requires the stored workbooks to match, cell for cell, formulas included. It fails on the 2.4.15 copies and passes on these.
+
+No result, figure content or number in the paper changes.
+
 ## 2.4.15 (29 October 2026)
 
 **Fix.** The three exploratory scripts could not run from the released repository. `scripts/novelty_checks.py`, `scripts/literature_sensitivity.py` and `scripts/audit_estimates.py` read `dbmatch/` and `config_used.json`, a working layout that no code in the repository produces and that was never released. They now read the released layout: `matches/`, whose columns they already used, and `config/study.json`.

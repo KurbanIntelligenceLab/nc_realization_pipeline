@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software or data, please cite the paper and this repository."
 title: "nc_realization_pipeline: code and data for \"Hypothetical labels in computational materials databases are not a reliable proxy for compositional novelty\""
 type: software
-version: 2.4.15
+version: 2.4.16
 date-released: 2026-10-26
 license: MIT
 repository-code: "https://github.com/KurbanIntelligenceLab/nc_realization_pipeline"
