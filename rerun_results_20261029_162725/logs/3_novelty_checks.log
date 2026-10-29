@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/hasankurban/ncr_release/nc_realization_pipeline/scripts/novelty_checks.py", line 166, in <module>
+    main()
+  File "/Users/hasankurban/ncr_release/nc_realization_pipeline/scripts/novelty_checks.py", line 116, in main
+    dbm = {r["pred_id"]: r for r in csv.DictReader(open(os.path.join(a.derived, "dbmatch", f"{stem}.csv")))}
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'work/dbmatch/oqmd.csv'

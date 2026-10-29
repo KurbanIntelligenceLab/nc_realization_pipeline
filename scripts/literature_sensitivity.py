@@ -46,9 +46,9 @@ def main(argv=None):
     ap.add_argument("--audit", default="data/audit/literature_audit.csv")
     ap.add_argument("--config", default=None)
     a = ap.parse_args(argv)
-    cfg = json.load(open(a.config or os.path.join(a.derived, "config_used.json")))
+    cfg = json.load(open(a.config or os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "config", "study.json")))
     o = Outcomes(cfg, os.path.join(a.derived, "cohorts", "threshold__oqmd.csv"),
-                 os.path.join(a.derived, "dbmatch", "threshold__oqmd.csv"))
+                 os.path.join(a.derived, "matches", "threshold__oqmd.csv"))
     h = float(cfg.get("threshold", {}).get("horizon_years", 5))
     x = np.array([float(r["x_mev"]) for r in o.R])
     side = np.array([r["side"] for r in o.R])

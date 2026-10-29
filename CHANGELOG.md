@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.4.15 (29 October 2026)
+
+**Fix.** The three exploratory scripts could not run from the released repository. `scripts/novelty_checks.py`, `scripts/literature_sensitivity.py` and `scripts/audit_estimates.py` read `dbmatch/` and `config_used.json`, a working layout that no code in the repository produces and that was never released. They now read the released layout: `matches/`, whose columns they already used, and `config/study.json`.
+
+Run on the released `data_derived/`, the corrected scripts reproduce all 149 values in the released `checks/novelty_checks.json`, `checks/audit_estimates.json` and `checks/literature_sensitivity.json` exactly, so no published number changes. The defect was found by an independent rerun of the full analysis on the authors' machine.
+
+**Also in this release:**
+- `scripts/reproduce.sh` now runs the three exploratory analyses, so level 2 reproduces every analysis in the paper.
+- `docs/REPRODUCE.md` lists their outputs.
+- New regression test, `tests/test_exploratory_scripts.py`. It runs each script on the released layout and requires the released results; it fails on 2.4.14 and passes on 2.4.15.
+
 ## 2.4.14 (29 October 2026)
 
 Figure revisions for submission. No data, estimate or Source Data value changes. Every plotted value was verified identical to 2.4.13, and all ten presentation checks pass.

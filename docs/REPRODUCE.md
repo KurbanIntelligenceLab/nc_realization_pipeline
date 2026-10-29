@@ -35,6 +35,7 @@ The script runs every step into a fresh `work/` directory and ends with `scripts
 | `estimate` | `results/summary.json` | the estimates in the paper |
 | `robustness` | `results/robustness.json` | Supplementary Table 3 |
 | `figures` | `figures/`, `results/figure_data.json` | Figures 1 to 3 and Supplementary Figures 1 and 2, drawn from the exported results only |
+| exploratory scripts | `checks/novelty_checks.json`, `checks/literature_sensitivity.json`, `checks/audit_estimates.json` | the novelty checks, the literature-audit sensitivity (Supplementary Note 6) and the record-level audit estimates (Supplementary Note 7); identical to the files in `data_derived/checks/` |
 
 To copy a run into the released derived data, run `scripts/export_derived.sh`.
 

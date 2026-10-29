@@ -55,7 +55,7 @@ def main(argv=None):
     size = defaultdict(int)
     known = {}
     for stem in ("oqmd", "materials_project"):
-        dbm = {x["pred_id"]: x for x in csv.DictReader(open(os.path.join(a.derived, "dbmatch", f"{stem}.csv")))}
+        dbm = {x["pred_id"]: x for x in csv.DictReader(open(os.path.join(a.derived, "matches", f"{stem}.csv")))}
         for x in csv.DictReader(open(os.path.join(a.derived, "cohorts", f"{stem}.csv"))):
             m = dbm[x["pred_id"]]
             if m["db_first_T3"] and dt.date.fromisoformat(m["db_first_T3"]) <= dt.date.fromisoformat(x["entry_date"]):

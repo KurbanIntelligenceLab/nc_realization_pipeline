@@ -1,0 +1,430 @@
+== check
+[16:27:35] check: oqmd_v1_0: 279210 rows, 249495 hypothetical
+[16:27:36] check: oqmd_v1_1: 310219 rows, 277481 hypothetical
+[16:27:37] check: mp_2022_10_28: 154807 rows, 104723 hypothetical
+[16:27:38] check: experiments: 624213 experimental records
+[16:27:38] check: cutoff 2026-10-25; inputs recorded in ../work/manifest.json
+== hull --workers 8
+[16:27:42] decomposition energies: 249495 targets in 68449 chemical systems
+[16:28:09] hull: oqmd_v1_0: 249495 entries, 48 displayed/recomputed label disagreements
+[16:28:13] decomposition energies: 277481 targets in 70768 chemical systems
+[16:28:33] hull: oqmd_v1_1: 277481 entries, 1473 displayed/recomputed label disagreements
+[16:28:34] decomposition energies: 104723 targets in 35991 chemical systems
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 285 competing entries for Li1 Mn1 P4 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 285 competing entries for Li1 Mn6 P7 O24 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 220 competing entries for Li4 Cr3 Fe1 O8 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 285 competing entries for Li1 Mn2 P3 O10 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 220 competing entries for Li2 Cr1 Fe1 O4 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 268 competing entries for Li1 Fe1 P4 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 262 competing entries for Li1 Mn1 Cr1 O4 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 268 competing entries for Li1 Fe2 P3 O10 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 285 competing entries for Li9 Mn3 P8 O29 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 262 competing entries for Li4 Mn1 Cr1 O6 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 262 competing entries for Li8 Mn13 Cr3 O32 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 285 competing entries for Li1 Mn1 P2 O7 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 268 competing entries for Li1 Fe1 P3 O9 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 285 competing entries for Li1 Mn1 P3 O9 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 218 competing entries for Li1 V1 Cr1 O4 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 207 competing entries for Li2 Ti3 Co1 O8 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 274 competing entries for Li2 Mn1 Co3 O8 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 222 competing entries for Li2 V3 Co1 O8 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 274 competing entries for Li4 Mn1 Co5 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 274 competing entries for Li2 Mn3 Co1 O8 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 242 competing entries for Li2 Ti3 V1 O8 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 242 competing entries for Li1 Ti1 V1 O4 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 266 competing entries for Li1 V1 O2 F2 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 266 competing entries for Li2 V1 O1 F4 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 215 competing entries for Li1 Co1 Ni1 O4 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 246 competing entries for Li1 V1 P4 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 266 competing entries for Li1 V3 O2 F6 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 270 competing entries for Li2 Ti3 Mn1 O8 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 246 competing entries for Li1 V2 P5 O16 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 246 competing entries for Li1 V1 P1 O4 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 246 competing entries for Li1 V1 P2 O7 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 246 competing entries for Li1 V2 P3 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 246 competing entries for Li8 V3 P8 O29 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 254 competing entries for Li5 Ti6 Fe1 O16 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 269 competing entries for Li1 Mn1 Ni1 O4 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/functools.py:1001: UserWarning: No Pauling electronegativity for He. Setting to NaN. This has no physical meaning, and is mainly done to avoid errors caused by the code expecting a float.
+  val = self.func(instance)
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 208 competing entries for Na1 Ca2 V3 Co2 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 264 competing entries for Na1 Ca1 Fe3 P4 O16 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 263 competing entries for Na3 Fe2 P2 O8 F3 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 372 competing entries for Li1 Mn1 P1 H1 O5 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 470 competing entries for Li1 Mn1 P1 O4 F1 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 264 competing entries for Na3 Ca18 Fe1 P14 O56 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 430 competing entries for Li1 Fe1 P1 O4 F1 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 334 competing entries for Li3 V2 P4 H2 O16 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 241 competing entries for Li1 Cr1 P1 O4 F1 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 334 competing entries for Li1 V1 P1 H1 O5 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 207 competing entries for Na2 Mg3 Ti1 S6 O24 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 349 competing entries for Li2 Fe1 P2 H1 O8 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 207 competing entries for Na2 Mg5 Ti3 S12 O48 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 222 competing entries for Na1 Mn2 V3 Pb2 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 207 competing entries for Na6 Mg7 Ti1 S12 O48 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 251 competing entries for Li1 Cr1 P1 H1 O5 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 201 competing entries for K2 Zr1 Fe1 P3 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 204 competing entries for K2 Ti1 Cr1 P3 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 230 competing entries for Na1 Mg1 Fe1 S3 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 234 competing entries for Ca1 Fe2 Sb2 P6 O24 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 287 competing entries for Mn1 Fe2 Sb2 P6 O24 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 246 competing entries for Na3 V2 P2 O8 F3 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 595 competing entries for Li1 Mn1 V1 P4 O14 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 566 competing entries for Li6 V3 Fe1 P6 O24 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 233 competing entries for Li1 Mn1 V1 P4 O14 - Using SLSQP to find decomposition likely to be slow
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 210 competing entries for Li6 V3 Fe1 P6 O24 - Using SLSQP to find decomposition likely to be slow
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 566 competing entries for Li2 V1 Fe1 P4 O14 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 210 competing entries for Li2 V1 Fe1 P4 O14 - Using SLSQP to find decomposition likely to be slow
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 595 competing entries for Li4 Mn1 V3 P8 O28 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 233 competing entries for Li4 Mn1 V3 P8 O28 - Using SLSQP to find decomposition likely to be slow
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 226 competing entries for Na2 Fe1 P1 C1 O7 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 595 competing entries for Li2 Mn1 V1 P4 O14 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 233 competing entries for Li2 Mn1 V1 P4 O14 - Using SLSQP to find decomposition likely to be slow
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 595 competing entries for Li3 Mn1 V1 P4 O14 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 233 competing entries for Li3 Mn1 V1 P4 O14 - Using SLSQP to find decomposition likely to be slow
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 233 competing entries for Ca1 Ti1 Cr1 P3 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 228 competing entries for Ca1 Ti1 Ni1 P2 O9 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 258 competing entries for Na1 Nb1 Fe1 P3 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 232 competing entries for Ti1 Cd1 Fe1 P3 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 277 competing entries for Na4 Mg1 Fe1 P3 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 277 competing entries for Na7 Mg7 Fe5 P12 O48 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 295 competing entries for Sr1 Ti1 Fe1 P3 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 298 competing entries for Ca1 Ti1 Fe1 P3 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 358 competing entries for Ti1 Mn1 Fe1 P3 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 241 competing entries for Ca1 Fe1 Sn1 P3 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 238 competing entries for K3 Li1 Mn4 Mo6 O24 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 281 competing entries for Ti1 Mn1 Cr1 P3 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 212 competing entries for Na2 V1 P1 C1 O7 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 364 competing entries for Na7 Mn4 Fe8 P12 O48 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 482 competing entries for Li2 V1 Cr1 P4 O14 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 274 competing entries for Na9 Fe2 P4 H1 O18 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 364 competing entries for Na1 Mn1 Fe1 P2 O8 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 274 competing entries for Na1 Fe2 P2 H1 O8 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 204 competing entries for Na1 Co1 P2 H1 O7 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 478 competing entries for Li2 Ti1 Fe1 P3 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 304 competing entries for Li2 In1 Fe1 P4 O14 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 209 competing entries for Ba3 Fe4 P8 Pb1 O28 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 303 competing entries for Mn2 V3 Cr1 P6 O24 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 238 competing entries for Na6 Al4 Fe1 Si8 O26 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 245 competing entries for Na3 Ca10 Mn7 V12 O48 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 256 competing entries for Na2 Ca17 V2 P14 O56 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 212 competing entries for Na1 Ni1 P2 H1 O7 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 373 competing entries for Li2 Ti1 Cr1 P3 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 204 competing entries for Li1 Mn3 Al2 H6 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 263 competing entries for Li4 V3 Cr3 Sn2 O16 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 239 competing entries for Li1 Ni2 P4 H3 O14 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 209 competing entries for Ba7 Ca2 Mn3 V2 O20 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 211 competing entries for Na1 V3 H6 S2 O14 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 218 competing entries for K1 V1 P1 O4 F1 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 221 competing entries for Li1 Fe1 H1 S1 O5 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 230 competing entries for Ba1 Fe1 P1 O4 F2 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 237 competing entries for Ba1 Nb2 Fe2 P6 O24 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 233 competing entries for Rb1 Na3 Fe7 P6 O24 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 207 competing entries for Na2 Mn2 Cd1 P3 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 263 competing entries for Ti3 V2 Cr1 P6 O24 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 364 competing entries for Mn2 V3 Fe1 P6 O24 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 301 competing entries for Ti1 Mn2 V3 P6 O24 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 224 competing entries for Ti3 V1 Sn2 P6 O24 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 240 competing entries for K4 Mg1 Fe3 P5 O20 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 232 competing entries for Na1 H4 C3 N3 O4 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 215 competing entries for K2 V3 P4 H4 O19 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 303 competing entries for K1 Rb1 Mn2 Ga4 P6 H8 O28 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 347 competing entries for Na4 Ca1 Zr2 Ti1 Si4 O16 F2 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 426 competing entries for Na4 Zr2 Ti1 Mn1 Si4 O16 F2 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 218 competing entries for K1 Rb1 Mn2 Ga4 P6 H8 O28 - Using SLSQP to find decomposition likely to be slow
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 243 competing entries for Na2 Ca4 Y1 Zr1 Si4 O15 F3 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 220 competing entries for Na4 Zr2 Ti1 Mn1 Si4 O16 F2 - Using SLSQP to find decomposition likely to be slow
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 386 competing entries for Na1 Ca1 Mg1 Fe1 Si4 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 375 competing entries for Na11 Ti1 Nb2 Si4 P2 O25 F1 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 222 competing entries for Na11 Ti1 Nb2 Si4 P2 O25 F1 - Using SLSQP to find decomposition likely to be slow
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 313 competing entries for Na1 Ca1 Al1 P1 H1 O5 F2 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 355 competing entries for Na22 Ca1 Fe6 P12 O48 F6 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 518 competing entries for Na1 Ca1 Ti1 Mn1 Si2 O8 F1 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 221 competing entries for Na1 Ca1 Al1 P1 H1 O5 F2 - Using SLSQP to find decomposition likely to be slow
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 345 competing entries for K3 Na7 Mg2 H12 S6 N2 O36 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 270 competing entries for K1 Na1 Ca1 Mg5 Si8 O22 F2 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 246 competing entries for Na1 Ca1 Ti1 Mn1 Si2 O8 F1 - Using SLSQP to find decomposition likely to be slow
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 253 competing entries for Na1 Mn6 Al3 H42 S2 O38 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 323 competing entries for K1 Mg1 Mn2 Al1 Ge3 O10 F2 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 350 competing entries for Ca3 Zr2 Al1 Fe1 Si1 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 237 competing entries for Na4 Al3 Si3 B1 H4 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 325 competing entries for Ca3 Hf2 Al1 Fe1 Si1 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 348 competing entries for Mg1 Al6 Fe1 Si2 B2 O18 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 458 competing entries for Na1 Li1 Mn1 P1 C1 O7 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 213 competing entries for Na1 Li1 Mn1 P1 C1 O7 - Using SLSQP to find decomposition likely to be slow
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 201 competing entries for Zn2 Ga1 P3 H8 N2 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 292 competing entries for Rb8 Ti3 Cr2 Ni3 P16 O56 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 202 competing entries for Na2 Ca1 Mg5 Si8 O22 F2 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 308 competing entries for Na4 Ca7 Mn1 Si12 H4 O36 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 241 competing entries for K1 Mg3 Al1 Si3 H2 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 212 competing entries for K1 Mg3 Al1 Si3 O10 F2 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 250 competing entries for K1 Al3 Fe2 Si2 H2 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 223 competing entries for K2 Ca1 Mg5 Si8 H2 O24 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 202 competing entries for Ba1 Sr1 Mn2 Al9 Pb1 O20 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 899 competing entries for Li3 V1 Fe1 P2 O8 F2 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 237 competing entries for K2 V1 Co6 Cu2 As5 O24 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 327 competing entries for Li3 V1 Fe1 P2 O8 F2 - Using SLSQP to find decomposition likely to be slow
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 230 competing entries for Ca4 Be2 Al2 Si9 H2 O28 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 230 competing entries for Ca4 Be3 Al1 Si9 H3 O28 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 604 competing entries for Li2 V1 Cr1 P2 H2 O10 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 253 competing entries for Li2 V1 Cr1 P2 H2 O10 - Using SLSQP to find decomposition likely to be slow
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 697 competing entries for Li2 V1 Cr1 P2 O8 F2 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 292 competing entries for Li2 V1 Cr1 P2 O8 F2 - Using SLSQP to find decomposition likely to be slow
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 953 competing entries for Li1 Mn1 V1 P2 O8 F2 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 363 competing entries for Li1 Mn1 V1 P2 O8 F2 - Using SLSQP to find decomposition likely to be slow
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 276 competing entries for Na1 Ca4 Ta1 Ti4 Si5 O25 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 267 competing entries for Ca5 Ta1 Ti3 Al1 Si5 O25 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 337 competing entries for K2 Fe1 P2 H3 O8 F2 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 953 competing entries for Li2 Mn1 V1 P2 O8 F2 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 363 competing entries for Li2 Mn1 V1 P2 O8 F2 - Using SLSQP to find decomposition likely to be slow
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 244 competing entries for Na6 Ca3 Mn1 C6 O18 F2 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 412 competing entries for K1 Li1 Mn1 P1 C1 O7 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 213 competing entries for K1 Ca2 Be2 Al1 Si12 O30 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 289 competing entries for Na1 Ca1 Mg1 Cr1 Si4 O12 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 201 competing entries for Na4 Al3 Si3 C1 N1 O13 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 259 competing entries for Rb2 Mn1 P2 H3 O8 F2 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 227 competing entries for Na3 Mg4 Cr1 Si8 O22 F2 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 332 competing entries for Na7 Mn5 P3 H6 O15 F13 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 286 competing entries for Ba1 Na4 Ti2 Si10 B2 O30 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 463 competing entries for K3 Na8 Fe1 H12 S6 N2 O36 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 350 competing entries for Mg1 V1 Cr1 P2 H2 O10 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 243 competing entries for K3 Na8 Fe1 H12 S6 N2 O36 - Using SLSQP to find decomposition likely to be slow
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 631 competing entries for Na1 Mg3 V3 Cr3 Si6 B3 H3 O31 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 314 competing entries for Na1 Mg3 V3 Cr3 Si6 B3 H3 O31 - Using SLSQP to find decomposition likely to be slow
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 634 competing entries for Na2 Ca1 Mn1 Al2 P2 H2 O10 F4 - Calculating inner hull to discard additional unstable entries
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+/Users/hasankurban/anaconda3/envs/ncr311/lib/python3.11/site-packages/pymatgen/analysis/phase_diagram.py:1075: UserWarning: There are 391 competing entries for Na2 Ca1 Mn1 Al2 P2 H2 O10 F4 - Using SLSQP to find decomposition likely to be slow
+  return self.get_decomp_and_phase_separation_energy(entry, **kwargs)[1]
+[16:29:44] hull: mp_2022_10_28: 104723 entries, 0 displayed/recomputed label disagreements
+== reconstruction
+[16:29:45] reconstruction: oqmd_v1_0: displayed {'stable_hypothetical_entries': 3309, 'stable_new_compositions': 2860, 'stable_new_heusler_type_compositions': 2197}, recomputed {'stable_hypothetical_entries': 3359, 'stable_new_compositions': 2895, 'stable_new_heusler_type_compositions': 2208}
+[16:29:47] reconstruction: oqmd_v1_1: displayed {'stable_hypothetical_entries': 2344, 'stable_new_compositions': 2282, 'stable_new_heusler_type_compositions': 1602}, recomputed {'stable_hypothetical_entries': 3732, 'stable_new_compositions': 3633, 'stable_new_heusler_type_compositions': 2652}
+[16:29:48] reconstruction: mp_2022_10_28: displayed {'stable_hypothetical_entries': 11501, 'stable_new_compositions': 10966, 'stable_new_heusler_type_compositions': 0}, recomputed {'stable_hypothetical_entries': 11501, 'stable_new_compositions': 10966, 'stable_new_heusler_type_compositions': 0}
+== cohorts
+[16:29:57] cohorts: OQMD: entries without a displayed label are not treated as presented stable (17433 keys first seen without one)
+[16:29:57] cohorts: OQMD: 3552 predictions released as stable
+[16:29:57] cohorts: OQMD: threshold population of 9703 entries within ±50 meV/atom (17433 excluded because no label was displayed; running variable 'displayed', 0 entries fell back to the recomputed value)
+[16:29:59] cohorts: Materials Project: entries without a displayed label are not treated as presented stable (0 keys first seen without one)
+[16:29:59] cohorts: Materials Project: 10966 predictions released as stable
+== power
+[16:30:00] power: OQMD: 25 meV window N_A=1418, N_B=3783, MDE at the assumed rate 0.019018000892639924
+[16:30:00] power: OQMD: blocks 'class': max |blocked SMD| 0.3732815257449442, passes False, usable A/B 1417/3776, MDE 0.01902768932651394
+[16:30:00] power: OQMD: blocks 'class_en': max |blocked SMD| 0.06357065761974907, passes True, usable A/B 1412/3757, MDE 0.019065296959898514
+[16:30:00] power: OQMD: blocks 'class_en_nel': max |blocked SMD| 0.029085977306308432, passes True, usable A/B 1408/3738, MDE 0.019098203842584344
+== premise
+[16:30:07] premise: oqmd_v1_0 vs mp_2022_10_28: matched 35415; within 25 meV disagreement 0.2692607678308346; beyond 100 0.08310991957104558; check (a) passes = True
+[16:30:15] premise: oqmd_v1_1 vs mp_2022_10_28: matched 38408; within 25 meV disagreement 0.2939609875476859; beyond 100 0.10547919053073693; check (a) passes = True
+== coverage-known
+[16:30:26] coverage-known: oqmd_v1_0: 12907/24487 ICSD-origin compositions (52.7%) appear in COD
+[16:30:28] coverage-known: oqmd_v1_1: 14555/27626 ICSD-origin compositions (52.7%) appear in COD
+[16:30:29] coverage-known: mp_2022_10_28: 21145/43322 ICSD-origin compositions (48.8%) appear in COD
+== match
+[16:30:35] match: materials_project.csv: 2074 predictions with a matching record
+[16:30:36] match: oqmd.csv: 150 predictions with a matching record
+[16:30:36] match: threshold__oqmd.csv: 255 predictions with a matching record
+== estimate
+[16:30:37] estimate: wrote /Users/hasankurban/ncr_release/nc_realization_pipeline/config/../work/results/summary.json
+== robustness
+[16:30:39] robustness: rematching for composition_tolerance_halved
+[16:30:44] match: materials_project.csv: 1991 predictions with a matching record
+[16:30:44] match: oqmd.csv: 145 predictions with a matching record
+[16:30:45] match: threshold__oqmd.csv: 230 predictions with a matching record
+[16:30:45] robustness: rematching for composition_tolerance_doubled
+[16:30:49] match: materials_project.csv: 2211 predictions with a matching record
+[16:30:50] match: oqmd.csv: 160 predictions with a matching record
+[16:30:50] match: threshold__oqmd.csv: 283 predictions with a matching record
+[16:30:50] robustness: rematching for without_high_pressure_reports
+[16:30:55] match: materials_project.csv: 2073 predictions with a matching record
+[16:30:55] match: oqmd.csv: 150 predictions with a matching record
+[16:30:55] match: threshold__oqmd.csv: 255 predictions with a matching record
+[16:30:56] robustness: rematching for year_only_dates_1_january
+[16:31:00] match: materials_project.csv: 2074 predictions with a matching record
+[16:31:00] match: oqmd.csv: 150 predictions with a matching record
+[16:31:01] match: threshold__oqmd.csv: 255 predictions with a matching record
+[16:31:01] robustness: rematching for year_only_dates_31_december
+[16:31:06] match: materials_project.csv: 2074 predictions with a matching record
+[16:31:06] match: oqmd.csv: 150 predictions with a matching record
+[16:31:06] match: threshold__oqmd.csv: 255 predictions with a matching record
+[16:31:10] robustness: wrote /Users/hasankurban/ncr_release/nc_realization_pipeline/config/../work/results/robustness.json
+== figures
+[16:31:13] figures: wrote /Users/hasankurban/ncr_release/nc_realization_pipeline/config/../work/figures and 5 Source Data workbooks; checks {'fig2_axes_start_at_zero': True, 'fig3_axes_start_at_zero': True, 'min_font_at_least_5pt': True, 'max_font_at_most_8pt': True, 'only_black_or_white_text': True, 'strokes_at_most_1pt': True, 'fig1_points_match_estimates': True, 'fig2c_points_match_estimates': True, 'figS2_shows_every_window': True, 'no_overlap_clipping_hyphen_or_mixed_decimals': True}
+all headline numbers match the paper (work)

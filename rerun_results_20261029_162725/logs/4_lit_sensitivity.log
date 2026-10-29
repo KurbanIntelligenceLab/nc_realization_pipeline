@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/hasankurban/ncr_release/nc_realization_pipeline/scripts/literature_sensitivity.py", line 85, in <module>
+    main()
+  File "/Users/hasankurban/ncr_release/nc_realization_pipeline/scripts/literature_sensitivity.py", line 49, in main
+    cfg = json.load(open(a.config or os.path.join(a.derived, "config_used.json")))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'work/config_used.json'

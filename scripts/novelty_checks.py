@@ -75,7 +75,7 @@ def exact_composition_check(derived, records_path, exps=None):
     out = {}
     for stem in ("oqmd", "materials_project"):
         cohort = list(csv.DictReader(open(os.path.join(derived, "cohorts", f"{stem}.csv"))))
-        dbm = {r["pred_id"]: r for r in csv.DictReader(open(os.path.join(derived, "dbmatch", f"{stem}.csv")))}
+        dbm = {r["pred_id"]: r for r in csv.DictReader(open(os.path.join(derived, "matches", f"{stem}.csv")))}
         known = []
         for r in cohort:
             e, _ = parse_date(r["entry_date"])
@@ -113,7 +113,7 @@ def main(argv=None):
     out = {"note": "exploratory; added after the outcomes were measured", "structure": {}, "timing": {}}
     for stem in ("oqmd", "materials_project"):
         cohort = {r["pred_id"]: r for r in csv.DictReader(open(os.path.join(a.derived, "cohorts", f"{stem}.csv")))}
-        dbm = {r["pred_id"]: r for r in csv.DictReader(open(os.path.join(a.derived, "dbmatch", f"{stem}.csv")))}
+        dbm = {r["pred_id"]: r for r in csv.DictReader(open(os.path.join(a.derived, "matches", f"{stem}.csv")))}
         by_release = defaultdict(list)
         for pid, r in cohort.items():
             by_release[r["entry_release"]].append(r)

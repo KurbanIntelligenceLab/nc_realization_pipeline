@@ -1,0 +1,5 @@
+1_tests: passed in 9 s
+2_reproduce: passed in 219 s
+3_novelty_checks: FAILED (exit 1) in 6 s
+4_lit_sensitivity: FAILED (exit 1) in 0 s
+5_audit_estimates: FAILED (exit 1) in 1 s
