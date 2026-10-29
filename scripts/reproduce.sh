@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Run the whole analysis from the released inputs in data/, including the exploratory analyses,
-# and compare the results with the numbers reported in the paper. About 15 to 30 minutes on a
-# laptop; most of it is the hull.
+# and compare the results with the numbers reported in the paper. About 4 to 30 minutes on a
+# laptop (227 s on an Apple M2 Max with 8 workers); most of it is the hull.
 #
 #   scripts/reproduce.sh                 # uses python3 and 4 worker processes
 #   PYTHON=.venv/bin/python3 WORKERS=8 scripts/reproduce.sh

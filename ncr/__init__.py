@@ -1,2 +1,2 @@
 """Dated stability predictions and their later experimental crystal structures."""
-__version__ = "2.4.16"
+__version__ = "2.4.17"

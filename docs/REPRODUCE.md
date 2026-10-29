@@ -12,11 +12,13 @@ This does two things:
 1. It copies `data_derived/cohorts/` and `data_derived/matches/` to a temporary directory, recomputes every estimate, and compares them with `data_derived/results/summary.json`.
 2. It checks that `data_derived/` reproduces the headline numbers of the paper (`tests/paper_numbers.json`) and that the inputs in `data/` match the checksums recorded in the study.
 
-## Level 2: run the whole analysis from the released inputs (15 to 30 minutes)
+## Level 2: run the whole analysis from the released inputs (4 to 30 minutes)
 
 ```bash
 WORKERS=4 scripts/reproduce.sh
 ```
+
+An independent rerun of release 2.4.15 took 227 s on an Apple M2 Max with `WORKERS=8`; machines with fewer cores take longer, up to about 30 minutes.
 
 The script runs every step into a fresh `work/` directory and ends with `scripts/compare_results.py`, which compares the run with the paper:
 - the counts must match exactly;
@@ -28,8 +30,8 @@ The script runs every step into a fresh `work/` directory and ends with `scripts
 | `hull` | `hull/*.csv` | the longest step; parallel with `--workers` |
 | `reconstruction` | `checks/reconstruction.json` | 2,860 and 2,282 displayed stable new compositions for OQMD v1.0 and v1.1, and 10,966 for the Materials Project |
 | `cohorts` | `cohorts/*.csv` | 3,552 OQMD and 10,966 Materials Project predictions; 9,703 entries in the threshold population |
-| `power` | `checks/power.json` | largest blocked standardized difference 0.029 at ±25 meV/atom; 1,408 and 3,738 entries in usable blocks |
-| `premise` | `checks/premise.json` | label disagreement 26.9% (v1.0) and 29.4% (v1.1) within 25 meV/atom |
+| `power` | `checks/power.json` | largest blocked standardized difference 0.029 at ±25 meV per atom; 1,408 and 3,738 entries in usable blocks |
+| `premise` | `checks/premise.json` | label disagreement 26.9% (v1.0) and 29.4% (v1.1) within 25 meV per atom |
 | `coverage-known` | `checks/coverage_known.json` | COD contains 52.7% of the OQMD v1.0 experimental compositions |
 | `match` | `matches/*.csv` | 150 OQMD and 2,074 Materials Project predictions with a matching record |
 | `estimate` | `results/summary.json` | the estimates in the paper |

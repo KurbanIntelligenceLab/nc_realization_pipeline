@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.4.17 (29 October 2026)
+
+Documentation only: the README, `docs/REPRODUCE.md` and the header of `scripts/reproduce.sh` now agree with the paper. Found by a consistency audit of every document.
+- The README gave the record-level audit intervals rounded to the nearest value, where the paper rounds intervals outward. It now gives the paper's 1,880 (1,370-2,060) confirmed entries and 15.9% (11.3-17.6%) for the Materials Project; the computed values are 1,877 (1,379-2,055) and 15.88% (11.40-17.55%).
+- The README used two phrasings the paper retired: "stable and new" (now "stable and presented as hypothetical") and "hypothetical and stable" (now "stable and hypothetical").
+- "meV/atom" is now "meV per atom", as in the paper.
+- The level-2 run time is 4 to 30 minutes, depending on the machine; an independent rerun took 227 s on an Apple M2 Max with 8 workers.
+
+No code, data or result changes.
+
 ## 2.4.16 (29 October 2026)
 
 **Fix: the stored figures and Source Data in `data_derived/figures/` were out of date.** They dated from before the figure revisions of 2.4.14 and the Source Data audit marking, although the code that draws them was current. They are replaced by the output of an independent rerun of the full analysis on the authors' machine (`v2.4.15`, commit 93b9c52b; macOS, Python 3.11.17).
