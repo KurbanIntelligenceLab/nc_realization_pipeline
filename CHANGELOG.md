@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.4.18 (29 October 2026)
+
+**Fix: one exploratory number in the paper had no code in the repository.** Results quotes "the upper 95% bound on the stable-side recording probability is 0.63%". It was computed outside the released code. `scripts/literature_sensitivity.py` now reports it as `stable_side_upper_95_pct`, the upper limit of the Wilson 95% interval for 3 of 1,418 (0.6202%, which the paper rounds outward to 0.63%), together with the same quantity for the literature-informed recoding.
+
+The value is added to `data_derived/checks/literature_sensitivity.json`, produced by running the script on the released data; all 22 existing values in that file are unchanged. Found by a field-by-field check of every number in the paper against the outputs of the independent rerun. No other number changes.
+
 ## 2.4.17 (29 October 2026)
 
 Documentation only: the README, `docs/REPRODUCE.md` and the header of `scripts/reproduce.sh` now agree with the paper. Found by a consistency audit of every document.

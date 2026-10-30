@@ -6,6 +6,8 @@ audit (data/audit/literature_audit.csv) checked all four events in the +/-25 meV
 paper's outcome definition, an experimentally determined crystal structure, none is reclassified. This
 script recodes as non-events the events for which any earlier experimental report was found, as the
 design treats any compound with an earlier record, and reruns the blocked estimator and the exact test.
+For both, it also reports the upper limit of the Wilson 95% interval for the stable-side recording
+probability (exploratory; quoted in Results as the upper 95% bound).
 
 Usage (from the repository root):
     python3 scripts/literature_sensitivity.py [--derived data_derived] [--audit data/audit/literature_audit.csv]
@@ -37,7 +39,10 @@ def _summary(y, A, B, block):
     nA, nB, kA, kB = int(A.sum()), int(B.sum()), int(y[A].sum()), int(y[B].sum())
     return {"events_stable": kA, "n_stable": nA, "events_unstable": kB, "n_unstable": nB,
             "estimate_pp": 100 * e["estimate"], "ci_low_pp": 100 * e["ci_low"], "ci_high_pp": 100 * e["ci_high"],
-            "exact_one_sided_p": _exact_one_sided(kA, kA + kB, nA / (nA + nB))}
+            "exact_one_sided_p": _exact_one_sided(kA, kA + kB, nA / (nA + nB)),
+            # upper limit of the Wilson 95% interval for the stable-side recording probability, kA of nA,
+            # in percent; the paper reports it rounded outward (0.6202 -> 0.63)
+            "stable_side_upper_95_pct": 100 * S.share(kA, nA)["hi"]}
 
 
 def main(argv=None):

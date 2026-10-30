@@ -17,7 +17,8 @@
     "estimate_pp": 0.15590466202506137,
     "ci_low_pp": -0.06404304572423428,
     "ci_high_pp": 0.375852369774357,
-    "exact_one_sided_p": 0.06448805455622458
+    "exact_one_sided_p": 0.06448805455622458,
+    "stable_side_upper_95_pct": 0.620185978116954
   },
   "any_earlier_experimental_report_counts": {
     "events_stable": 2,
@@ -27,6 +28,7 @@
     "estimate_pp": 0.10055128370238653,
     "ci_low_pp": -0.09077769422418194,
     "ci_high_pp": 0.291880261628955,
-    "exact_one_sided_p": 0.1824654988342791
+    "exact_one_sided_p": 0.1824654988342791,
+    "stable_side_upper_95_pct": 0.5128124218630171
   }
 }
